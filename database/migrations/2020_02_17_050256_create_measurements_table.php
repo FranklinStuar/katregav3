@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCompanyToUsersTable extends Migration
+class CreateMeasurementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class AddCompanyToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::create('measurements', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name',80);
             $table->unsignedBigInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +29,9 @@ class AddCompanyToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('measurements', function (Blueprint $table) {
             $table->dropForeign(['company_id']);
         });
+        Schema::dropIfExists('measurements');
     }
 }

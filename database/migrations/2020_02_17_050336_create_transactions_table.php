@@ -29,9 +29,9 @@ class CreateTransactionsTable extends Migration
             $table->tinyInteger('porcent_disc_tax');
             $table->tinyInteger('porcent_disc_not_iva');
             $table->string('observation',200)->nullable();
-            $table->enum('status',['active','canceled','anull'])->default(0); // 
-            $table->unsignedInteger('user_id'); // vendedor
-            $table->unsignedInteger('client_id');
+            $table->enum('status',['active','canceled','anull'])->default('active'); // 
+            $table->unsignedBigInteger('user_id'); // vendedor
+            $table->unsignedBigInteger('client_id');
             $table->unsignedBigInteger('company_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('client_id')->references('id')->on('clients');

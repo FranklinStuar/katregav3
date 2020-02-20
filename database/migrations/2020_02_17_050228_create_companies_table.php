@@ -23,6 +23,8 @@ class CreateCompaniesTable extends Migration
             $table->string('cod_local_bill');
             $table->string('cod_terminal_bill');
             $table->string('cod_currenct_bill');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -34,6 +36,9 @@ class CreateCompaniesTable extends Migration
      */
     public function down()
     {
+        Schema::table('companies', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('companies');
     }
 }
