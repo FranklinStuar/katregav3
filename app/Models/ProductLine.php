@@ -7,4 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class ProductLine extends Model
 {
     //
+    protected $fillable = [
+        'name',
+        'company_id'
+    ];
 }

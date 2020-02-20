@@ -16,6 +16,7 @@ class CreateSellersTable extends Migration
         Schema::create('sellers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('code',17);
+            $table->string('guia_remision',15)->nullable();
             $table->unsignedBigInteger('transaction_id');
             $table->unsignedBigInteger('client_id');
             $table->foreign('transaction_id')->references('id')->on('transactions');

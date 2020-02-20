@@ -25,7 +25,9 @@ class CreateTransactionDetailsTable extends Migration
             $table->string('observation');
             $table->float('aditional_stock',4,2); // si se da algo màs como regalo, muy usado al momento de hacer inventario, de esa manera se sabe donde se va el producto
             $table->tinyInteger('aditional_time'); // en caso que el tiempo de entrega ya sea del producto o servicio sea adicional
+            $table->unsignedBigInteger('stock_id');
             $table->unsignedBigInteger('transaction_id');
+            $table->foreign('stock_id')->references('id')->on('stocks');
             $table->foreign('transaction_id')->references('id')->on('transactions');
             $table->timestamps();
         });
@@ -39,6 +41,7 @@ class CreateTransactionDetailsTable extends Migration
     public function down()
     {
         Schema::table('transaction_details', function (Blueprint $table) {
+            $table->dropForeign(['stock_id']);
             $table->dropForeign(['transaction_id']);
         });
         Schema::dropIfExists('transaction_details');
