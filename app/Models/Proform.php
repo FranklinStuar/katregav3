@@ -8,8 +8,9 @@ class Proform extends Model
 {
     //
     protected $fillable = [
+        'date',
         'code',
-        'client_id',
         'transaction_id',
+        'client_id',
     ];
 }

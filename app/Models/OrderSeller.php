@@ -9,9 +9,12 @@ class OrderSeller extends Model
     //
     protected $fillable = [
         'code',
-        'status', // Ingresado, aceptado, vendido, rechazado
-        'client_id',
-        'seller_id', // si fue aprovado se puede transformar en venta
+        'date',
+        'fecha_entrega', // fecha en la que se entrega la orden
+        'code',
+        'status', // i=Ingresado, a=aceptado, s=vendido, d=rechazado
+        'seller_id', // cuando se termine se efectua en venta
         'transaction_id',
+        'client_id',
     ];
 }

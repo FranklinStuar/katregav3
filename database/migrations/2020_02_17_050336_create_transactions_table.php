@@ -15,8 +15,6 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamp('date')->nullable();
-            $table->integer('cod');
             //Forma en la que se paga
             $table->tinyInteger('type_price'); // 1 a 5 de los precios elegidos para los productos
             $table->float('total_credit_card',8,2)->default(0); // total del dinero que se paga con tarjeta de crédito
@@ -30,12 +28,12 @@ class CreateTransactionsTable extends Migration
             $table->float('tax',8,2);
             $table->float('discount_tax',8,2);
             $table->float('discount_not_tax',8,2);
-            $table->float('services',8,2); // son otro servicios extras fuera de la venta que no se facturan
-            $table->float('transport',8,2);
             $table->tinyInteger('porcent_disc_tax');
             $table->tinyInteger('porcent_disc_not_iva');
+            $table->float('interes',8,2); // en caso que tenga que pagar interés por algo aparte de la venta
+            $table->float('services',8,2); // son otro servicios extras fuera de la venta que no se facturan
+            $table->float('transport',8,2);
             $table->string('observation',200)->nullable();
-            $table->enum('status',['active','canceled','anull'])->default('active'); // 
             $table->unsignedBigInteger('user_id'); // vendedor o comprador cuando corresponda
             $table->unsignedBigInteger('company_id');
             $table->foreign('user_id')->references('id')->on('users');

@@ -16,13 +16,16 @@ class CreateOrderSellersTable extends Migration
         Schema::create('order_sellers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('code',17);
-            $table->enum('status',['ingress','accept','seller','dismiss']); // Ingresado, aceptado, vendido, rechazado
-            $table->unsignedBigInteger('client_id');
-            $table->unsignedBigInteger('seller_id')->nullable(); // si fue aprovado se puede transformar en venta
+            $table->timestamp('date')->nullable();
+            $table->date('fecha_entrega'); // fecha en la que se entrega la orden
+            $table->string('code',17);
+            $table->enum('status',['i','a','s','d']); // i=Ingresado, a=aceptado, s=vendido, d=rechazado
+            $table->unsignedBigInteger('seller_id')->nullable(); // cuando se termine se efectua en venta
             $table->unsignedBigInteger('transaction_id');
-            $table->foreign('client_id')->references('id')->on('clients');
+            $table->unsignedBigInteger('client_id');
             $table->foreign('seller_id')->references('id')->on('sellers');
             $table->foreign('transaction_id')->references('id')->on('transactions');
+            $table->foreign('client_id')->references('id')->on('clients');
             $table->timestamps();
         });
     }
@@ -35,9 +38,9 @@ class CreateOrderSellersTable extends Migration
     public function down()
     {
         Schema::table('order_sellers', function (Blueprint $table) {
-            $table->dropForeign(['client_id']);
             $table->dropForeign(['seller_id']);
             $table->dropForeign(['transaction_id']);
+            $table->dropForeign(['client_id']);
         });
         Schema::dropIfExists('order_sellers');
     }

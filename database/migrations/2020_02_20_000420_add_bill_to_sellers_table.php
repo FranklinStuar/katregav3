@@ -8,6 +8,8 @@ class AddBillToSellersTable extends Migration
 {
     /**
      * Run the migrations.
+     * 
+     * Sirve solo si emite facturas, en el caso de las notas de venta se genera de otra manera
      *
      * @return void
      */
@@ -15,7 +17,7 @@ class AddBillToSellersTable extends Migration
     {
         Schema::table('sellers', function (Blueprint $table) {
             //
-            $table->unsignedBigInteger('bill_id');
+            $table->unsignedBigInteger('bill_id')->nullable();
             $table->foreign('bill_id')->references('id')->on('bills');
         });
     }

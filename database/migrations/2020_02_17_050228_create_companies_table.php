@@ -18,21 +18,12 @@ class CreateCompaniesTable extends Migration
             $table->string('name',50);
             $table->string('identification',13);
             $table->string('representant',50);
-            $table->string('address',50);
-            $table->string('email',60);
-            // para los documentos a entregar
-            $table->enum('type_document',['none','note','bill','electronic'])->default('none'); // ninguna, nota de venta, factura, facturacion electronica
-            // monto mínimo al momento de generar una factura, sirve para cuando se entregue nota de venta y el monto mínimo es $12 y para artesanos que es de $4
-            $table->tinyInteger('amount_min_bill')->default(0); 
-            // los códigos para la factura
-            $table->string('cod_local_bill',3)->default('1'); // Número del local
-            $table->string('cod_terminal_bill',3)->default('1'); // número de terminal
-            $table->string('cod_currenct_bill',9)->default('1'); // número actual de la factura
-            // configuración del sri - todo en español para entender más fácilmente
-            $table->string('ambiente_sri');
-            $table->string('tipo_emision_sri',1); // producción o prueba
-            $table->string('file_sri',49); // archivo que da el sri para
-            $table->string('contrasena_sri'); // contraseña que viene con la clave del sri
+            $table->string('address',50)->nullable();
+            $table->string('email',60)->nullable();
+            
+            // el tipo de documento para indicar si está usando el acceso al sri o es informal
+            // también sirve para saber el tipo de documento que se va a entregar y si puede o o recibir retencion
+            $table->enum('type_identification',['ruc','rise','other'])->default('other'); 
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

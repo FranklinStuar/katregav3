@@ -15,7 +15,10 @@ class CreatePurchasesTable extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('code',17);
+            $table->timestamp('date')->nullable();
+            $table->integer('code'); // el codigo que se genera automaticamente para la empresa y listar por id
+            $table->string('bill',17); // el numero de factura que nos entregan
+            $table->enum('type_document',['bill','note','none']); // tipo de documento que nos entrega el 
             $table->unsignedBigInteger('provider_id');
             $table->unsignedBigInteger('transaction_id');
             $table->foreign('provider_id')->references('id')->on('providers');

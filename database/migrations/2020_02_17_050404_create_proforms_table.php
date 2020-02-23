@@ -15,11 +15,12 @@ class CreateProformsTable extends Migration
     {
         Schema::create('proforms', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->timestamp('date')->nullable();
             $table->string('code',17);
-            $table->unsignedBigInteger('client_id');
             $table->unsignedBigInteger('transaction_id');
-            $table->foreign('client_id')->references('id')->on('clients');
+            $table->unsignedBigInteger('client_id');
             $table->foreign('transaction_id')->references('id')->on('transactions');
+            $table->foreign('client_id')->references('id')->on('clients');
             $table->timestamps();
         });
     }
@@ -32,8 +33,8 @@ class CreateProformsTable extends Migration
     public function down()
     {
         Schema::table('proforms', function (Blueprint $table) {
-            $table->dropForeign(['client_id']);
             $table->dropForeign(['transaction_id']);
+            $table->dropForeign(['client_id']);
         });
         Schema::dropIfExists('proforms');
     }

@@ -13,20 +13,9 @@ class Company extends Model
         'representant',
         'address',
         'email',
+        // el tipo de documento para indicar si está usando el acceso al sri o es informal
+        // también sirve para saber el tipo de documento que se va a entregar y si puede o o recibir retencion
+        'type_identification', 
         'user_id',
-
-        // para los documentos a entregar
-        'type_document', // ninguna, nota de venta, factura, facturacion electronica
-        // monto mínimo al momento de generar una factura, sirve para cuando se entregue nota de venta y el monto mínimo es $12 y para artesanos que es de $4
-        'amount_min_bill',
-        // los códigos para la factura
-        'cod_local_bill', // Número del local
-        'cod_terminal_bill', // número de terminal
-        'cod_currenct_bill', // número actual de la factura
-        // configuración del sri - todo en español para entender más fácilmente
-        'ambiente_sri',
-        'tipo_emision_sri', // producción o prueba
-        'file_sri', // archivo que da el sri para la facturacion electrónica
-        'contrasena_sri', // contraseña que viene con la clave del sri
     ];
 }
