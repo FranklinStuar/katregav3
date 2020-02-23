@@ -18,7 +18,6 @@ class CreateOrderSellersTable extends Migration
             $table->string('code',17);
             $table->timestamp('date')->nullable();
             $table->date('fecha_entrega'); // fecha en la que se entrega la orden
-            $table->string('code',17);
             $table->enum('status',['i','a','s','d']); // i=Ingresado, a=aceptado, s=vendido, d=rechazado
             $table->unsignedBigInteger('seller_id')->nullable(); // cuando se termine se efectua en venta
             $table->unsignedBigInteger('transaction_id');
