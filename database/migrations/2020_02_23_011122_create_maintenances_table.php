@@ -17,11 +17,13 @@ class CreateMaintenancesTable extends Migration
             $table->bigIncrements('id');
             $table->timestamp('date')->nullabe(); // fecha que se realiza el mantenimiento y con el horario para revisar en el mejor momento para hacerle publicidad
             $table->string('observation')->nullable();
-            $table->enum('type',['c','pv','pd']); // correctivo, preventivo, predictivo
+            $table->tinyInteger('type_maintenance'); // 1:correctivo, 2:preventivo, 3:predictivo, 4:programado, 5:por periodo de tiempo
             $table->date('next_maintenance')->nullable(); // fecha de la proxima revision en caso de existir
             $table->unsignedBigInteger('seller_id')->nullable(); // en caso que el mantenimiento esté vinvulado a alguna venta en concreto, nulo porque puede dar mantenimiento gratuito al ser panas o algo parecido
+            $table->unsignedBigInteger('client_id');
             $table->unsignedBigInteger('company_id');
-            $table->foreign('seller_id')->references('id')->on('companies');
+            $table->foreign('seller_id')->references('id')->on('clients');
+            $table->foreign('client_id')->references('id')->on('companies');
             $table->foreign('company_id')->references('id')->on('companies');
             $table->timestamps();
         });
@@ -36,6 +38,7 @@ class CreateMaintenancesTable extends Migration
     {
         Schema::table('maintenances', function (Blueprint $table) {
             $table->dropForeign(['seller_id']);
+            $table->dropForeign(['client_id']);
             $table->dropForeign(['company_id']);
         });
         Schema::dropIfExists('maintenances');

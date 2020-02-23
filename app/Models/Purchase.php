@@ -15,4 +15,10 @@ class Purchase extends Model
         'provider_id',
         'transaction_id',
     ];
+    
+    public function transaction()
+    {
+        return $this->belongsTo('App\Models\Transaction');
+    }
+    
 }

@@ -30,4 +30,15 @@ class Transaction extends Model
          'user_id', // vendedor o comprador cuando corresponda
          'company_id',
     ];
+    
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+    
+    public function company()
+    {
+        return $this->belongsTo('App\Models\Company');
+    }
+    
 }

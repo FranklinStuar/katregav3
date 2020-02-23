@@ -21,4 +21,16 @@ class TransactionDetail extends Model
         'stock_id',
         'transaction_id',
     ];
+    
+    public function transaction()
+    {
+        return $this->belongsTo('App\Models\Transaction');
+    }
+    
+    
+    public function stock()
+    {
+        return $this->belongsTo('App\Models\Stock');
+    }
+    
 }

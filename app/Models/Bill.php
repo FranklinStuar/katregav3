@@ -39,4 +39,19 @@ class Bill extends Model
         'pdf_sri', // pdf que se genera cuando el xml ha sido firmado
         'xml_firma_sri', // se firmado por el sri
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function company()
+    {
+        return $this->belongsTo('App\Models\Company');
+    }
+    
+    public function client()
+    {
+        return $this->belongsTo('App\Models\Client');
+    }
 }

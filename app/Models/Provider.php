@@ -16,4 +16,10 @@ class Provider extends Model
         'deb',// deuda actual que se tiene con el proveedor
         'company_id',
     ];
+    
+    public function company()
+    {
+        return $this->belongsTo('App\Models\Company');
+    }
+    
 }

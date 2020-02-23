@@ -12,4 +12,9 @@ class MaintenanceMechanic extends Model
         'next_change', // cuando es el siguiente cambio de aceite
         'maintenance_id',
     ];
+    
+    public function maintenance()
+    {
+        return $this->belongsTo('App\Models\Maintenance');
+    }
 }

@@ -18,4 +18,14 @@ class BillDetail extends Model
         'stock_id',
         'bill_id',
     ];
+
+    public function bill()
+    {
+        return $this->belongsTo('App\Models\Bill');
+    }
+
+    public function stock()
+    {
+        return $this->belongsTo('App\Models\Stock');
+    }
 }

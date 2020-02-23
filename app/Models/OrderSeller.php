@@ -17,4 +17,15 @@ class OrderSeller extends Model
         'transaction_id',
         'client_id',
     ];
+    
+    public function transaction()
+    {
+        return $this->belongsTo('App\Models\Transaction');
+    }
+    
+    public function client()
+    {
+        return $this->belongsTo('App\Models\Client');
+    }
+    
 }

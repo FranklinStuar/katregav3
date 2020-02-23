@@ -15,5 +15,29 @@ class Product extends Model
         'line_id',
         'stock_id',
     ];
+    
+    public function measurement()
+    {
+        return $this->belongsTo('App\Models\Measurement');
+    }
+    
+    
+    public function mark()
+    {
+        return $this->belongsTo('App\Models\Mark');
+    }
+    
+    
+    public function line()
+    {
+        return $this->belongsTo('App\Models\Line');
+    }
+    
+    
+    public function stock()
+    {
+        return $this->belongsTo('App\Models\Stock');
+    }
+    
 
 }

@@ -21,4 +21,20 @@ class Seller extends Model
         'client_id',
         'bill_id', // es la factura que se genera en la venta, en caso de ser nota de venta se genera una factura por varias ventas hasta llegar al monto establecido
     ];
+    
+    public function transaction()
+    {
+        return $this->belongsTo('App\Models\Transaction');
+    }
+    
+    public function client()
+    {
+        return $this->belongsTo('App\Models\Client');
+    }
+    
+    public function bill()
+    {
+        return $this->belongsTo('App\Models\Bill');
+    }
+    
 }

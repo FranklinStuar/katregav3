@@ -18,4 +18,10 @@ class Company extends Model
         'type_identification', 
         'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
 }

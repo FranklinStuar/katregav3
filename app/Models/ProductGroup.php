@@ -10,4 +10,10 @@ class ProductGroup extends Model
         'name',
         'company_id'
     ];
+    
+    public function company()
+    {
+        return $this->belongsTo('App\Models\Company');
+    }
+    
 }

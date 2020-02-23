@@ -13,4 +13,16 @@ class Proform extends Model
         'transaction_id',
         'client_id',
     ];
+    
+    public function client()
+    {
+        return $this->belongsTo('App\Models\Client');
+    }
+    
+    
+    public function transaction()
+    {
+        return $this->belongsTo('App\Models\Transaction');
+    }
+    
 }

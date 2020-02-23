@@ -27,4 +27,15 @@ class Stock extends Model
             'product_group_id',
             'company_id',
     ];
+    
+    public function company()
+    {
+        return $this->belongsTo('App\Models\Company');
+    }
+    
+    public function productGroup()
+    {
+        return $this->belongsTo('App\Models\ProductGroup');
+    }
+    
 }

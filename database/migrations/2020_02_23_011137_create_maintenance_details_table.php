@@ -15,6 +15,11 @@ class CreateMaintenanceDetailsTable extends Migration
     {
         Schema::create('maintenance_details', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('activity',90);
+            $table->string('comment');
+            $table->string('repsonsable');
+            $table->unsignedBigInteger('maintenance_id');
+            $table->foreign('maintenance_id')->references('id')->on('maintenances');
             $table->timestamps();
         });
     }
@@ -26,6 +31,9 @@ class CreateMaintenanceDetailsTable extends Migration
      */
     public function down()
     {
+        Schema::table('maintenance_mechanics', function (Blueprint $table) {
+            $table->dropForeign(['maintenance_id']);
+        });
         Schema::dropIfExists('maintenance_details');
     }
 }
