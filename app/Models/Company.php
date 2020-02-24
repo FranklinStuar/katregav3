@@ -34,4 +34,9 @@ class Company extends Model
         return $this->belongsTo('App\Model\Transaction');
     }
 
+    public function movementsMoney()
+    {
+        return $this->hasMany('App\Models\MovementMoney');
+    }
+
 }

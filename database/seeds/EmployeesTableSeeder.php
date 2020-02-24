@@ -16,7 +16,6 @@ class EmployeesTableSeeder extends Seeder
             'identification' => '0106410277',
             'name' => 'Franklin Peñafiel', // nombre del empleado
             'email' => 'franklin@katrega.com', // correo único que se brinda por parte de la empresa, el correo no es personal
-            'password' => bcrypt('F'), // contraseña interna para uso dentro de la empresa
             'charge' => 'CEO',
             'salary' => 1200,
             'user_id' => 1,
@@ -29,7 +28,6 @@ class EmployeesTableSeeder extends Seeder
                 'identification' => '0'.$i,
                 'name' => 'Employee '.$i, // nombre del empleado
                 'email' => 'employee'.$i.'@'.$email.'.com', // correo único que se brinda por parte de la empresa, el correo no es personal
-                'password' => bcrypt('E'), // contraseña interna para uso dentro de la empresa
                 'user_id' => $i,
                 'company_id' => $company_id,
             ]);

@@ -18,7 +18,6 @@ class CreateEmployeesTable extends Migration
             $table->string('identification',13)->nullable(); // numero de cedula o identificador
             $table->string('name'); // nombre del empleado
             $table->string('email')->unique(); // correo único que se brinda por parte de la empresa, el correo no es personal
-            $table->string('password'); // contraseña interna para uso dentro de la empresa
             $table->date('birth')->nullable();
             $table->string('address',80)->nullable();
             $table->string('phone',15)->nullable();

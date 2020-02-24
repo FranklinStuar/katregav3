@@ -14,6 +14,7 @@ class Maintenance extends Model
         'seller_id', // en caso que el mantenimiento esté vinvulado a alguna venta en concreto, nulo porque puede dar mantenimiento gratuito al ser panas o algo parecido
         'client_id', // a quien se realiza el mantenimiento
         'company_id',
+        
     ];
 
     public function seller()

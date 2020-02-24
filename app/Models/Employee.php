@@ -10,7 +10,6 @@ class Employee extends Model
         'identification',
         'name',
         'email', // correo es de la empresa, no se permiten correos personales
-        'password', // contraseña interna para uso dentro de la empresa
         'birth', // fecha de nacimiento
         'address',
         'phone',
