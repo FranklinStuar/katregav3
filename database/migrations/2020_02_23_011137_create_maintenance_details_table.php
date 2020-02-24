@@ -31,7 +31,7 @@ class CreateMaintenanceDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::table('maintenance_mechanics', function (Blueprint $table) {
+        Schema::table('maintenance_details', function (Blueprint $table) {
             $table->dropForeign(['maintenance_id']);
         });
         Schema::dropIfExists('maintenance_details');

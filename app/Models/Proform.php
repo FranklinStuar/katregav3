@@ -11,12 +11,18 @@ class Proform extends Model
         'date',
         'code',
         'transaction_id',
+        'seller_id',
         'client_id',
     ];
     
     public function client()
     {
         return $this->belongsTo('App\Models\Client');
+    }
+    
+    public function seller()
+    {
+        return $this->belongsTo('App\Models\Seller');
     }
     
     

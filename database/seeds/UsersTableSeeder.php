@@ -13,15 +13,13 @@ class UsersTableSeeder extends Seeder
     {
         \DB::table('users')->insert([
             'name' => 'Franklin',
-            'username' => 'franklin',
             'email' => 'franklin@mail.com',
             'password' => bcrypt('F')
         ]);
-        for($i=0;$i<20;$i++){
+        for($i=2;$i<101;$i++){
             \DB::table('users')->insert([
-                'name' => "Usuer ".($i+1),
-                'username' => "user".($i+1),
-                'email' => "user".($i+1)."@mail.com",
+                'name' => "User ".$i,
+                'email' => "user".$i."@mail.com",
                 'password' => bcrypt('U')
             ]);
         }

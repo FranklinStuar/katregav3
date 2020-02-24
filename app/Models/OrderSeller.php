@@ -11,8 +11,8 @@ class OrderSeller extends Model
         'code',
         'date',
         'fecha_entrega', // fecha en la que se entrega la orden
-        'code',
         'status', // i=Ingresado, a=aceptado, s=vendido, d=rechazado
+        'advancement', // Adelanto con lo que se va a trabajar
         'seller_id', // cuando se termine se efectua en venta
         'transaction_id',
         'client_id',
@@ -26,6 +26,11 @@ class OrderSeller extends Model
     public function client()
     {
         return $this->belongsTo('App\Models\Client');
+    }
+    
+    public function seller()
+    {
+        return $this->belongsTo('App\Models\Seller');
     }
     
 }

@@ -21,12 +21,14 @@ class CreateCompaniesTable extends Migration
             $table->string('address',50)->nullable();
             $table->string('email',60)->nullable();
             
+            // Montos economicos con los que va a trabajar la empresa
+            $table->float('amount_chash',8,2)->default(0); // monto de dinero en efectivo
+            $table->float('amount_bank',8,2)->default(0); // monto de dinero en banco
+            
             // el tipo de documento para indicar si está usando el acceso al sri o es informal
             // también sirve para saber el tipo de documento que se va a entregar y si puede o o recibir retencion
             $table->enum('type_identification',['ruc','rise','other'])->default('other'); 
 
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -39,7 +41,6 @@ class CreateCompaniesTable extends Migration
     public function down()
     {
         Schema::table('companies', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
         });
         Schema::dropIfExists('companies');
     }

@@ -13,15 +13,25 @@ class Company extends Model
         'representant',
         'address',
         'email',
+
         // el tipo de documento para indicar si está usando el acceso al sri o es informal
         // también sirve para saber el tipo de documento que se va a entregar y si puede o o recibir retencion
         'type_identification', 
-        'user_id',
+        
+        // Montos economicos con los que va a trabajar la empresa
+        'amount_chash',
+        'amount_bank',
+        
     ];
 
-    public function user()
+    public function employees()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Model\Employee');
+    }
+
+    public function transactions()
+    {
+        return $this->belongsTo('App\Model\Transaction');
     }
 
 }
