@@ -18,3 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('edit', 'Admin\CompanyController@edit')->name('company.edit');
+Route::put('update', 'Admin\CompanyController@update')->name('company.update');
+Route::resource('products', 'Admin\ProductController');

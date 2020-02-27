@@ -24,6 +24,11 @@ class Company extends Model
         
     ];
 
+    public function products()
+    {
+        return $this->hasManyThrough('App\Models\Product', 'App\Models\Stock','company_id','stock_id');
+    }
+
     public function employees()
     {
         return $this->belongsTo('App\Model\Employee');
