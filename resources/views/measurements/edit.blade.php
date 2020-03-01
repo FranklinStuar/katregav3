@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('title-top')
-    Nuevo grupo de producto
+    Editar Unidad de medida
 @endsection
 
 @section('title-body')
-    Nuevo grupo de productos
+    Editar Unidad de medida
 @endsection
 
 @section('content')
 
   <div class="card card-primary">
-    @include('product-groups.form',['url'=>route('groups.store'),'edit'=> false])    
+    @include('measurements.form',['url'=>route('measurements.update',$measurement->id),'edit'=> true])    
   </div>
   <!-- /.card -->
 

@@ -186,25 +186,25 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../UI/buttons.html" class="nav-link">
+                <a href="{{route('groups.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Grupos</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../UI/sliders.html" class="nav-link">
+                <a href="{{route('marks.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Marcas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../UI/modals.html" class="nav-link">
+                <a href="{{route('lines.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Lineas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../UI/navbar.html" class="nav-link">
+                <a href="{{route('measurements.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Unidades de medida</p>
                 </a>
@@ -234,7 +234,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../UI/buttons.html" class="nav-link">
+                <a href="{{route('groups.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Grupos</p>
                 </a>

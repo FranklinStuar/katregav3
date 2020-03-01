@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('title-top')
-    Nuevo grupo de producto
+    Editar grupo de producto
 @endsection
 
 @section('title-body')
-    Nuevo grupo de productos
+    Editar grupo de productos
 @endsection
 
 @section('content')
 
   <div class="card card-primary">
-    @include('product-groups.form',['url'=>route('groups.store'),'edit'=> false])    
+    @include('product-groups.form',['url'=>route('groups.update',$group->id),'edit'=> true])    
   </div>
   <!-- /.card -->
 

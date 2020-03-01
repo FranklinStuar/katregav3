@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('title-top')
-    Grupo de Productos y servicios
+    Unidades de Medida
 @endsection
 
 @section('title-body')
-    Grupo de Productos y servicios
+    Unidades de Medida
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
 <div class="card">
   <div class="card-header">
     <div class="card-tools">
-      <a href="{{route('groups.create')}}" class="btn btn-default btn-sm">Nuevo Grupo</a>
+      <a href="{{route('measurements.create')}}" class="btn btn-default btn-sm">Nueva Medida de producto</a>
     </div>
   </div>
   <div class="card-body table-responsive p-0" style="max-height: 450px;">
@@ -25,16 +25,16 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ($groups as $group)
+        @foreach ($measurements as $measurement)
           <tr>
-            <td>{{$group->name}}</td>
+            <td>{{$measurement->name}}</td>
             <td>
-              <a href="{{route('groups.edit',$group->id)}}" class="btn btn-sm btn-info">Editar</a>
+              <a href="{{route('measurements.edit',$measurement->id)}}" class="btn btn-sm btn-info">Editar</a>
                 <button 
                     class="delete btn btn-sm btn-outline-danger" 
                     onclick="deleteItem(
-                        '{{route('groups.destroy',$group->id)}}',
-                        '{{$group->name}}'
+                        '{{route('measurements.destroy',$measurement->id)}}',
+                        '{{$measurement->name}}'
                         )">
                     <i class="fa fa-trash"></i>
                 </button>

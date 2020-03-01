@@ -44,4 +44,25 @@ class Company extends Model
         return $this->hasMany('App\Models\MovementMoney');
     }
 
+    public function groups()
+    {
+        return $this->hasMany('App\Models\ProductGroup', 'company_id');
+    }
+
+    public function marks()
+    {
+        return $this->hasMany('App\Models\Mark', 'company_id');
+    }
+
+    public function lines()
+    {
+        return $this->hasMany('App\Models\ProductLine', 'company_id');
+    }
+
+
+    public function measurements()
+    {
+        return $this->hasMany('App\Models\Measurement', 'company_id');
+    }
+
 }
