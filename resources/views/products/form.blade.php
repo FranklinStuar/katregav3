@@ -67,16 +67,26 @@
             <input type="number" placeholder="1.0" step="0.01" min="0" name="price_5" class="form-control col-sm-6" id="price_5"  value="{{$product->stock->price_5}}">
         </div>
 
-        @if (!$edit)
-            <hr>
-            <br>
-            <div class="form-group">
-                <label for="stock" class="col-sm-6">Stock</label>
-                <input type="number" placeholder="1.0" step="0.01" min="0" name="stock" class="form-control col-sm-6" id="stock"  value="{{$product->stock_total}}">
+        <hr>
+        <br>
+        <div class="row">
+            {{-- @if (!$edit) --}}
+                <div class="form-group col-md-4">
+                    <label for="stock_total" class="col-sm-6">Stock Actual</label>
+                    <input type="number" placeholder="1.0" step="0.01" min="0" name="stock_total" class="form-control col-sm-6" id="stock_total"  value="{{$product->stock_total}}">
+                </div>
+            {{-- @endif --}}
+            <div class="form-group col-md-4">
+                <label for="stock_nim" class="col-sm-6">Stock Mínimo</label>
+                <input type="number" placeholder="1.0" step="0.01" min="0" name="stock_nim" class="form-control col-sm-6" id="stock_nim"  value="{{$product->stock_nim}}">
             </div>
-            <br>
-        @endif
-
+            <div class="form-group col-md-4">
+                <label for="stock_nax" class="col-sm-6">Stock Máximo</label>
+                <input type="number" placeholder="1.0" step="0.01" min="0" name="stock_nax" class="form-control col-sm-6" id="stock_nax"  value="{{$product->stock_nax}}">
+            </div>
+        </div>
+        
+        <br>
         <hr>
 
         <div class="form-group">
@@ -87,6 +97,7 @@
                 @endforeach
             </select>
         </div>
+
         <div class="form-group">
             <label for="product_group_id" class="col-sm-6">Grupo <span class="red-text">*</span></label>
             <select name="product_group_id" class="form-control" class="col-sm-6" required>

@@ -17,7 +17,9 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->tinyInteger('type_inventory')->default(1); // tipos de inventarios, se realizará según se avance
             $table->boolean('without_stock')->default(false);
-            $table->float('sotck_total',7,2)->default(0); // stock actual para no tener que hacer una actividad en la base de datos en cada consulta
+            $table->float('stock_total',7,2)->default(0); // stock actual para no tener que hacer una actividad en la base de datos en cada consulta
+            $table->float('stock_nim',7,2)->default(0); // stock mínimo para tener en cuenta antes de comprar más
+            $table->float('stock_nax',7,2)->default(0); // stock máximo para no llenar mucho la bodega
             $table->unsignedBigInteger('mark_id');
             $table->unsignedBigInteger('line_id');
             $table->unsignedBigInteger('stock_id');

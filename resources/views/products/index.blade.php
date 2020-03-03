@@ -27,7 +27,7 @@
           <th>IVA</th>
           <th>Destino</th>
           <th>Precios</th>
-          <th>Un- Med</th>
+          <th>Stock</th>
           <th>Descuento</th>
           <th>Grupo</th>
           <th>Linea</th>
@@ -63,7 +63,7 @@
               Mínimo: $ {{$product->stock->minAndMaxPrice()['min']}} <br>
               Máximo: $ {{$product->stock->minAndMaxPrice()['max']}}
             </td>
-            <td>{{$product->stock->measurement->name}}</td>
+            <td>{{$product->stock_total}} ({{$product->stock->measurement->name}})</td>
             <td>
               {{$product->stock->discountActual()['value']}} %<br>
               @if ($product->stock->discountActual()['from'])
@@ -71,6 +71,7 @@
                 {{$product->stock->discountActual()['to']}}
               @endif
             </td>
+            
             <td>{{$product->stock->productGroup->name}}</td>
             <td>{{$product->mark->name}}</td>
             <td>{{$product->line->name}}</td>

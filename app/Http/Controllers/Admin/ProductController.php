@@ -70,11 +70,9 @@ class ProductController extends Controller
             'measurement_id' => $request->measurement_id,
             'company_id' => Auth::user()->company()->id
         ]);
-        $product = Product::create([
-            'stock_id' => $stock->id,
-            'mark_id' => $request->mark_id,
-            'line_id' => $request->line_id,
-        ]);
+        $data = $request->all();
+        $data['stock_id'] = $stock->id;
+        $product = Product::create($data);
         return redirect()->route('products.index')
         ->with('success','Nuevo Producto guardado');
     }
@@ -97,6 +95,7 @@ class ProductController extends Controller
             $finish_special = Carbon::create($anioFinish, $mesFinish, $diaFinish);
         }
         $product = Product::find($id);
+        // dd($request->all(),$init_special,$finish_special);
         $product->stock->update([
             'code' => $request->code,
             'name' => $request->name,
@@ -118,10 +117,7 @@ class ProductController extends Controller
             'measurement_id' => $request->measurement_id,
         ]);
         
-        $product->update([
-            'mark_id' => $request->mark_id,
-            'line_id' => $request->line_id,
-        ]);
+        $product->update($request->all());
         return redirect()->route('products.index')
         ->with('success','Producto actualizado');
     }

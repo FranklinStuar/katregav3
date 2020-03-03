@@ -43,6 +43,7 @@ class ProductsTableSeeder extends Seeder
             \DB::table('products')->insert([
                 'stock_id' => $i,
                 'line_id'=>rand(1,20),
+                'stock_total'=>rand(0,1000),
                 'mark_id'=>rand(1,20),
             ]);
         }

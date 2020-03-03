@@ -8,12 +8,15 @@ class Provider extends Model
 {
     
     protected $fillable = [
+        'id',
         'name',
         'identification',
         'address',
         'phone',
-        'type_price',// minorista, mayorista, proveedores, distribuidores, fieles
-        'deb',// deuda actual que se tiene con el proveedor
+        'movile',
+        'deb', // deuda actual que se tiene con el proveedor
+        'active', 
+        'type_identification',  // tipo de indentificaciòn para indicarnos que es lo que nos entrega le proveedor // ruc, rise, none
         'company_id',
     ];
     

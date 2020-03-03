@@ -308,13 +308,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('providers.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Todos los proveedores</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('providers.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Nuevo proveedor</p>
                 </a>

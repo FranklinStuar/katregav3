@@ -40,6 +40,11 @@ class Company extends Model
         return $this->hasMany('App\Models\Client');
     }
 
+    public function providers()
+    {
+        return $this->hasMany('App\Models\Provider');
+    }
+
     public function employees()
     {
         return $this->belongsTo('App\Model\Employee');

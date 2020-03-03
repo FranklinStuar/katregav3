@@ -40,7 +40,7 @@ class ClientController extends Controller
         $client = Client::find($id);
         if($client->delete())
             return response()->json(['message'=> "Cliente eliminado correctamente",'url'=> route('clients.index')]);
-        return response()->json(['message' => "Marca de productos no eliminado"],403);
+        return response()->json(['message' => "Cliente no eliminado"],403);
     }
 
 }

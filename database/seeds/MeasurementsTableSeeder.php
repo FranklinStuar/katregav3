@@ -14,7 +14,7 @@ class MeasurementsTableSeeder extends Seeder
         for($i=1;$i<=20;$i++){
             $cod = $i > 9?$i : '0'.$i;
             \DB::table('measurements')->insert([
-                'name' => 'measurement '.$i,
+                'name' => 'msmnt-'.$i,
                 'company_id' => 1,
             ]);
         }

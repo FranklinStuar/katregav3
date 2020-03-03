@@ -16,11 +16,14 @@ class CreateProvidersTable extends Migration
         Schema::create('providers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name',80);
-            $table->string('identification',13);
-            $table->string('address',60);
-            $table->string('phone',13);
-            $table->tinyInteger('type_price')->default(0); // minorista, mayorista, proveedores, distribuidores, fieles
-            $table->float('deb',8,2); // deuda actual que se tiene con el proveedor
+            $table->string('email',100);
+            $table->string('identification',13)->nullable();
+            $table->string('address',60)->nullable();
+            $table->string('phone',13)->nullable();
+            $table->string('movile',13)->nullable();
+            $table->float('deb',8,2)->default(0); // deuda actual que se tiene con el proveedor
+            $table->boolean('active')->default(true);
+            $table->enum('type_identification',['ruc','rise','none'])->default('none');  // tipo de indentificaciòn para indicarnos que es lo que nos entrega le proveedor
             $table->unsignedBigInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies');
             $table->timestamps();
