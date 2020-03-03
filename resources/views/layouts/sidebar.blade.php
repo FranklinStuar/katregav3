@@ -222,13 +222,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../UI/general.html" class="nav-link">
+                <a href="{{route('services.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Todo</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../UI/icons.html" class="nav-link">
+                <a href="{{route('services.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Nuevo Servicio</p>
                 </a>
@@ -237,6 +237,12 @@
                 <a href="{{route('groups.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Grupos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('measurements.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Unidades de medida</p>
                 </a>
               </li>
             </ul>

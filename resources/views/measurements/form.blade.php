@@ -14,6 +14,6 @@
 
     <div class="card-footer">
         <button type="submit" class="btn btn-primary">Guardar</button>
-        <a href="{{route('marks.index')}}" class="btn btn-danger">Cancelar</a>
+        <a href="{{route('measurements.index')}}" class="btn btn-danger">Cancelar</a>
     </div>
 </form>

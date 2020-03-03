@@ -15,8 +15,10 @@
 	<link rel="stylesheet" href="{{asset('admin-lte/dist/css/adminlte.min.css')}}">
 	<!-- Google Font: Source Sans Pro -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <!-- Sweet Alert -->
+	<!-- Sweet Alert -->
 	<link href="{{asset('plugins/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet">
+	<!-- Colors -->
+	<link href="{{asset('css/colors.css')}}" rel="stylesheet">
 	<!-- Scripts -->
 	@include('layouts.token') {{-- token para laravel --}}
 </head>

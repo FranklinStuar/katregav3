@@ -45,4 +45,3 @@ class MarkController extends Controller
     }
 
 }
-

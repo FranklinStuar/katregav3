@@ -17,8 +17,8 @@ class CreateStocksTable extends Migration
             $table->bigIncrements('id');
             $table->string('code',15);
             $table->string('name',80);
-            $table->string('alternate_name',80); 
-            $table->tinyInteger('disscount_fix')->default(0); // descuento en porcentaje
+            $table->string('alternative_name',80)->nullable(); 
+            $table->double('disscount_fix',5,2)->default(0); // descuento en porcentaje
             $table->boolean('tax')->default(true);
             $table->boolean('seller')->default(true);
             $table->boolean('purchase')->default(true);
@@ -28,11 +28,13 @@ class CreateStocksTable extends Migration
             $table->float('price_4',8,2)->default(0); // precios del 1 al 5
             $table->float('price_5',8,2)->default(0); // precios del 1 al 5
             $table->boolean('active')->default(true);
-            $table->date('init_special'); // fecha de inicio de descuento especial
-            $table->date('finish_special'); // fecha en que termina el descuento especial
-            $table->tinyInteger('disscount_special')->default(0); // descuento especial en porcentaje
+            $table->date('init_special')->nullable(); // fecha de inicio de descuento especial
+            $table->date('finish_special')->nullable(); // fecha en que termina el descuento especial
+            $table->double('disscount_special',5,2)->default(0); // descuento especial en porcentaje
+            $table->unsignedBigInteger('measurement_id');
             $table->unsignedBigInteger('product_group_id');
             $table->unsignedBigInteger('company_id');
+            $table->foreign('measurement_id')->references('id')->on('measurements');
             $table->foreign('product_group_id')->references('id')->on('product_groups');
             $table->foreign('company_id')->references('id')->on('companies');
             $table->timestamps();
@@ -47,6 +49,7 @@ class CreateStocksTable extends Migration
     public function down()
     {
         Schema::table('stocks', function (Blueprint $table) {
+            $table->dropForeign(['measurement_id']);
             $table->dropForeign(['product_group_id']);
             $table->dropForeign(['company_id']);
         });

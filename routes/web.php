@@ -25,3 +25,4 @@ Route::resource('groups', 'Admin\ProductGroupController');
 Route::resource('marks', 'Admin\MarkController');
 Route::resource('lines', 'Admin\ProductLineController');
 Route::resource('measurements', 'Admin\MeasurementController');
+Route::resource('services', 'Admin\ServiceController');

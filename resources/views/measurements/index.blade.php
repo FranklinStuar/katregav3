@@ -13,7 +13,7 @@
 <div class="card">
   <div class="card-header">
     <div class="card-tools">
-      <a href="{{route('measurements.create')}}" class="btn btn-default btn-sm">Nueva Medida de producto</a>
+      <a href="{{route('measurements.create')}}" class="btn btn-default btn-sm">Nueva Unidad de Medida</a>
     </div>
   </div>
   <div class="card-body table-responsive p-0" style="max-height: 450px;">
