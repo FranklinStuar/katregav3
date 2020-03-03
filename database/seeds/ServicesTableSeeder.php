@@ -33,7 +33,7 @@ class ServicesTableSeeder extends Seeder
                 'price_5'=>rand(0,2000),
                 'active'=>rand(0,1),
 
-                'disscount_special'=>($descEsp)?rand(0, 30):0,
+                'disscount_special'=>($descEsp)?rand(1, 30):0,
                 'init_special'=>($descEsp)?$dateDEsp:null,
                 'finish_special'=>($descEsp)?$dateHEsp:null,
                 'measurement_id'=>rand(1,20),

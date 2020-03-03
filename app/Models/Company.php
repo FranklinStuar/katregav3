@@ -24,6 +24,7 @@ class Company extends Model
         
     ];
 
+
     public function products()
     {
         return $this->hasManyThrough('App\Models\Product', 'App\Models\Stock','company_id','stock_id');
@@ -32,6 +33,11 @@ class Company extends Model
     public function services()
     {
         return $this->hasManyThrough('App\Models\Service', 'App\Models\Stock','company_id','stock_id');
+    }
+
+    public function clients()
+    {
+        return $this->hasMany('App\Models\Client');
     }
 
     public function employees()

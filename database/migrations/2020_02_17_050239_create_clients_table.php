@@ -17,14 +17,17 @@ class CreateClientsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name',80);
             $table->string('identification',13);
-            $table->string('address',60);
-            $table->string('phone',13);
+            $table->string('address',60)->nullable();
+            $table->string('phone',13)->nullable();
+            $table->string('movile',13)->nullable();
+            $table->string('email',100);
             $table->tinyInteger('type_price')->default(1); // minorista, mayorista, proveedores, distribuidores, fieles
-            $table->tinyInteger('disscount')->default(0); // descuento en porcentaje utilizado al momento de hacer una venta, proforma u orden de compra, 
+            $table->tinyInteger('discount')->default(0); // descuento en porcentaje utilizado al momento de hacer una venta, proforma u orden de compra, 
             $table->boolean('email_marketing')->default(false); // si se hace email markting al cliente o no
             $table->boolean('whatsapp_marketing')->default(false); // si se hace markting al cliente por whatsapp
             $table->float('deb',8,2)->default(0); // deuda actual que tiene el cliente
             $table->float('credit',8,2)->default(0); // Máximo que se le permite tener deuda al cliente
+            $table->boolean('active')->default(true); // Si está disponible su uso 
             $table->unsignedBigInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies');
             $table->timestamps();
