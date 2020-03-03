@@ -1,17 +1,18 @@
 @extends('layouts.app')
 
 @section('title-top')
-  Nuevo Servicio
+    Editar producto
 @endsection
 
 @section('title-body')
-  Nuevo Producto
+    Editar producto
 @endsection
 
 @section('content')
 
   <div class="card card-primary">
-    @include('products.form',['url'=>route('products.store'),'edit'=> false])    
+    @include('products.form',['url'=>route('products.update',$product->id),'edit'=> true])    
   </div>
+  <!-- /.card -->
 
 @endsection

@@ -71,7 +71,7 @@ class ServiceController extends Controller
         ]);
         $service = Service::create(['stock_id' => $stock->id]);
         return redirect()->route('services.index')
-        ->with('success','Nueva marca de productos y servicios guardada');
+        ->with('success','Nuevo Servicio guardado');
     }
     public function edit($id){
         $service = Service::find($id);
@@ -112,14 +112,14 @@ class ServiceController extends Controller
             'measurement_id' => $request->measurement_id,
         ]);
         return redirect()->route('services.index')
-        ->with('success','Marca de productos y servicios actualizada');
+        ->with('success','Servicio actualizado');
     }
 
     public function destroy($id){
         $service = Service::find($id);
         if($service->delete())
-            return response()->json(['message'=> "Marca de productos y servicios eliminado correctamente",'url'=> route('services.index')]);
-        return response()->json(['message' => "Marca de productos no eliminado"],403);
+            return response()->json(['message'=> "Servicio eliminado correctamente",'url'=> route('services.index')]);
+        return response()->json(['message' => "Servicio no eliminado"],403);
     }
 
 }

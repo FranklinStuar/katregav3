@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->tinyInteger('type_inventory')->default(1); // tipos de inventarios, se realizará según se avance
             $table->boolean('without_stock')->default(false);
-            $table->float('sotck',7,2)->default(0); // stock actual para no tener que hacer una actividad en la base de datos en cada consulta
+            $table->float('sotck_total',7,2)->default(0); // stock actual para no tener que hacer una actividad en la base de datos en cada consulta
             $table->unsignedBigInteger('mark_id');
             $table->unsignedBigInteger('line_id');
             $table->unsignedBigInteger('stock_id');
