@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'franklin@mail.com',
             'password' => bcrypt('F')
         ]);
-        for($i=2;$i<101;$i++){
+        for($i=2;$i<50;$i++){
             \DB::table('users')->insert([
                 'name' => "User ".$i,
                 'email' => "user".$i."@mail.com",

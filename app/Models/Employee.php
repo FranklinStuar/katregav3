@@ -12,6 +12,7 @@ class Employee extends Model
         'email', // correo es de la empresa, no se permiten correos personales
         'birth', // fecha de nacimiento
         'address',
+        'movile',
         'phone',
         'charge',
         'salary',
@@ -19,6 +20,7 @@ class Employee extends Model
         'advance', // anticipos en caso que lo tenga
         'user_id', // puede anexar el correo del usuario personal para ver un historial de las empresas a las que trabaja
         'company_id',
+        'active', // si está activo o no el uso
     ];
 
     public function company()

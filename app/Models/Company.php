@@ -47,12 +47,12 @@ class Company extends Model
 
     public function employees()
     {
-        return $this->belongsTo('App\Model\Employee');
+        return $this->hasMany('App\Models\Employee');
     }
 
     public function transactions()
     {
-        return $this->belongsTo('App\Model\Transaction');
+        return $this->hasMany('App\Models\Transaction');
     }
 
     public function movementsMoney()

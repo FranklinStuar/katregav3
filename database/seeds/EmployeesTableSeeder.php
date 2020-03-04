@@ -21,15 +21,14 @@ class EmployeesTableSeeder extends Seeder
             'user_id' => 1,
             'company_id' => 1,
         ]);
-        for($i=2;$i<101;$i++){
-            $company_id = rand(1,20);
-            $email = ($company_id==1)?'katrega':'empresa'.$company_id;
+        for($i=2;$i<11;$i++){
             \DB::table('employees')->insert([
                 'identification' => '0'.$i,
                 'name' => 'Employee '.$i, // nombre del empleado
-                'email' => 'employee'.$i.'@'.$email.'.com', // correo único que se brinda por parte de la empresa, el correo no es personal
+                'email' => 'employee'.$i.'@mail.com', // correo único que se brinda por parte de la empresa, el correo no es personal
                 'user_id' => $i,
-                'company_id' => $company_id,
+                'company_id' => 1,
+                'active' => rand(0,1)
             ]);
         }
     }

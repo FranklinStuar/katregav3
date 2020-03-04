@@ -21,10 +21,12 @@ class CreateEmployeesTable extends Migration
             $table->date('birth')->nullable();
             $table->string('address',80)->nullable();
             $table->string('phone',15)->nullable();
+            $table->string('movile',15)->nullable();
             $table->string('charge',50)->nullable();
             $table->float('salary',7,2)->default(0);
             $table->tinyInteger('journal')->default(1); // jornadas laborales que trabaja en el día, 
             $table->float('advance',7,2)->default(0); // anticipos en caso que lo tenga
+            $table->boolean('active')->default(true);
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('company_id');
             $table->foreign('user_id')->references('id')->on('users');

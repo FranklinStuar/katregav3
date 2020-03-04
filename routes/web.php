@@ -27,4 +27,5 @@ Route::resource('lines', 'Admin\ProductLineController');
 Route::resource('measurements', 'Admin\MeasurementController');
 Route::resource('services', 'Admin\ServiceController');
 Route::resource('clients', 'Admin\ClientController');
+Route::resource('employees', 'Admin\EmployeeController');
 Route::resource('providers', 'Admin\ProviderController');
