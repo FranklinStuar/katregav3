@@ -44,7 +44,7 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="charge">Puesto de trabajo </label>
-                <input type="date" name="charge" class="form-control" id="charge" value="{{$employee->charge}}">
+                <input type="text" name="charge" class="form-control" id="charge" placeholder="Puesto de trabajo" value="{{$employee->charge}}">
             </div>
         </div>
         @if($edit)

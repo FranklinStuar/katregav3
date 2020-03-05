@@ -17,7 +17,7 @@ class EmployeesTableSeeder extends Seeder
             'name' => 'Franklin Peñafiel', // nombre del empleado
             'email' => 'franklin@katrega.com', // correo único que se brinda por parte de la empresa, el correo no es personal
             'charge' => 'CEO',
-            'salary' => 1200,
+            'salary' => 2500,
             'user_id' => 1,
             'company_id' => 1,
         ]);
@@ -28,7 +28,8 @@ class EmployeesTableSeeder extends Seeder
                 'email' => 'employee'.$i.'@mail.com', // correo único que se brinda por parte de la empresa, el correo no es personal
                 'user_id' => $i,
                 'company_id' => 1,
-                'active' => rand(0,1)
+                'salary' => rand(400,10000),
+                'active' => rand(0,1),
             ]);
         }
     }

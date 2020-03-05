@@ -11,7 +11,7 @@
 @section('content')
 
   <div class="card card-primary">
-    @include('providers.form',['url'=>route('providers.update',$provider->id),'edit'=> true])    
+    @include('employees.form',['url'=>route('employees.update',$employee->id),'edit'=> true])    
   </div>
   <!-- /.card -->
 

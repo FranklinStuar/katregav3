@@ -28,6 +28,8 @@
           <th>Teléfono</th>
           <th>Celular</th>
           <th>Email</th>
+          <th>Salario</th>
+          <th>Puesto</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -54,6 +56,8 @@
             <td>{{$employee->phone}}</td>
             <td>{{$employee->movile}}</td>
             <td>{{$employee->email}}</td>
+            <td>$ {{$employee->salary}}</td>
+            <td>{{$employee->charge}}</td>
             <td>
               <a href="{{route('employees.edit',$employee->id)}}" class="btn btn-sm btn-info">Editar</a>
                 <button 
