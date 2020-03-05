@@ -21,6 +21,7 @@ class Employee extends Model
         'user_id', // puede anexar el correo del usuario personal para ver un historial de las empresas a las que trabaja
         'company_id',
         'active', // si está activo o no el uso
+        'type_employee_id',
     ];
 
     public function company()
@@ -43,4 +44,8 @@ class Employee extends Model
         return $this->hasMany('App\Models\ControlJornada', 'employee_id');
     }
 
+    public function type()
+    {
+        return $this->belongsTo('App\Models\TypeEmployee', 'type_employee_id');
+    }
 }

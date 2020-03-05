@@ -295,6 +295,24 @@
                   <p>Nuevo Cliente</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('client-types.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tipos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('client-categories.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Categorías</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('client-zones.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Zonas</p>
+                </a>
+              </li>
             </ul>
           </li>
 
@@ -319,6 +337,12 @@
                   <p>Nuevo proveedor</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('provider-types.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tipos</p>
+                </a>
+              </li>
             </ul>
           </li>
 
@@ -341,6 +365,12 @@
                 <a href="{{route('employees.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Nuevo empleado</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('employee-types.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tipos</p>
                 </a>
               </li>
             </ul>

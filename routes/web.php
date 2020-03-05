@@ -30,6 +30,14 @@ Route::resource('marks', 'Admin\MarkController');
 Route::resource('lines', 'Admin\ProductLineController');
 Route::resource('measurements', 'Admin\MeasurementController');
 Route::resource('services', 'Admin\ServiceController');
+
 Route::resource('clients', 'Admin\ClientController');
+Route::resource('client-types', 'Admin\TypeClientController');
+Route::resource('client-categories', 'Admin\CategoryClientController');
+Route::resource('client-zones', 'Admin\ZoneClientController');
+
 Route::resource('employees', 'Admin\EmployeeController');
+Route::resource('employee-types', 'Admin\TypeEmployeeController');
+
 Route::resource('providers', 'Admin\ProviderController');
+Route::resource('provider-types', 'Admin\TypeProviderController');

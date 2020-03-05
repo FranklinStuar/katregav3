@@ -18,6 +18,7 @@ class Provider extends Model
         'active', 
         'type_identification',  // tipo de indentificaciòn para indicarnos que es lo que nos entrega le proveedor // ruc, rise, none
         'company_id',
+        'type_provider_id',
     ];
     
     public function company()
@@ -25,4 +26,8 @@ class Provider extends Model
         return $this->belongsTo('App\Models\Company');
     }
     
+    public function type()
+    {
+        return $this->belongsTo('App\Models\TypeProvider', 'type_provider_id');
+    }
 }

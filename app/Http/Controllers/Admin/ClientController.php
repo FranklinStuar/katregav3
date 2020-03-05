@@ -16,7 +16,13 @@ class ClientController extends Controller
 
     public function create(){
         $client = new Client;
-        return view('clients.create',compact('client'));
+        $client->credit=0;
+        $client->deb=0;
+        $client->discount=0;
+        $types = \App\Models\TypeClient::all();
+        $categories = \App\Models\CategoryClient::all();
+        $zones = \App\Models\ZoneClient::all();
+        return view('clients.create',compact('client','categories','zones','types'));
     }
     public function store(Request $request){
         $data = $request->all();
@@ -27,7 +33,10 @@ class ClientController extends Controller
     }
     public function edit($id){
         $client = Client::find($id);
-        return view('clients.edit',compact('client'));
+        $types = \App\Models\TypeClient::all();
+        $categories = \App\Models\CategoryClient::all();
+        $zones = \App\Models\ZoneClient::all();
+        return view('clients.edit',compact('client','categories','zones','types'));
     }
     public function update(Request $request,$id){
         $client = Client::find($id);

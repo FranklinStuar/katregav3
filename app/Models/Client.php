@@ -21,11 +21,29 @@ class Client extends Model
         'credit', // Máximo que se le permite tener deuda al cliente
         'active', // Si está disponible su uso 
         'company_id',
+        'type_client_id',
+        'category_client_id',
+        'zone_client_id',
     ];
     
     public function company()
     {
         return $this->belongsTo('App\Models\Company');
+    }
+
+    public function type()
+    {
+        return $this->belongsTo('App\Models\TypeClient', 'type_client_id');
+    }
+
+    public function zone()
+    {
+        return $this->belongsTo('App\Models\ZoneClient', 'zone_client_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('App\Models\CategoryClient', 'category_client_id');
     }
     
 }

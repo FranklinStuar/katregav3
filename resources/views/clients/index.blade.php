@@ -27,7 +27,10 @@
           <th>Teléfono</th>
           <th>Celular</th>
           <th>Email</th>
-          <th>Tipo Clien.</th>
+          <th>Cat. venta.</th>
+          <th>Tipo</th>
+          <th>Categoria</th>
+          <th>Zona</th>
           <th>Descuento</th>
           <th>Acciones</th>
         </tr>
@@ -56,6 +59,9 @@
               @elseif ($client->type_price == 5) Cliente fiel
               @endif
             </td>
+            <td>@if($client->type) {{$client->type->name}} @endif</td>
+            <td>@if($client->zone) {{$client->zone->name}} @endif</td>
+            <td>@if($client->category) {{$client->category->name}} @endif</td>
             <td>{{$client->discount}} %</td>
             <td>
               <a href="{{route('clients.edit',$client->id)}}" class="btn btn-sm btn-info">Editar</a>

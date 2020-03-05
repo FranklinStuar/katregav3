@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoriaClientesTable extends Migration
+class CreateTypeProvidersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateCategoriaClientesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categoria_clientes', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('type_providers', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('name',80);
             $table->unsignedBigInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies');
@@ -29,6 +29,6 @@ class CreateCategoriaClientesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categoria_clientes');
+        Schema::dropIfExists('type_providers');
     }
 }

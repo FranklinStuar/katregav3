@@ -43,6 +43,21 @@ class Company extends Model
         return $this->hasMany('App\Models\Client');
     }
 
+    public function clientZones()
+    {
+        return $this->hasMany('App\Models\ZoneClient');
+    }
+
+    public function clientCategories()
+    {
+        return $this->hasMany('App\Models\CategoryClient');
+    }
+
+    public function clientTypes()
+    {
+        return $this->hasMany('App\Models\TypeClient');
+    }
+
     public function providers()
     {
         return $this->hasMany('App\Models\Provider');
