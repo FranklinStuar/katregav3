@@ -413,17 +413,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('company.edit')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Empresa</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sri</p>
-                </a>
-              </li>
+              @if (Auth::user()->company()->access_sri)
+                <li class="nav-item">
+                  <a href="{{route('sri.edit')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Sri</p>
+                  </a>
+                </li>
+              @endif
             </ul>
           </li>
           

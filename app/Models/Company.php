@@ -8,12 +8,15 @@ class Company extends Model
 {
     //
     protected $fillable = [
+        'code',
         'name',
         'identification',
-        'representant',
         'address',
+        'phone',
         'email',
-
+        
+        'access_sri', // indica si lleva la configuración del sri o no
+        
         // el tipo de documento para indicar si está usando el acceso al sri o es informal
         // también sirve para saber el tipo de documento que se va a entregar y si puede o o recibir retencion
         'type_identification', 
@@ -80,5 +83,8 @@ class Company extends Model
         return $this->hasMany('App\Models\Measurement', 'company_id');
     }
 
-
+    public function sri()
+    {
+        return $this->hasOne('App\Models\Sri','company_id');
+    }
 }

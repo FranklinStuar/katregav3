@@ -18,9 +18,10 @@ class CreateCompaniesTable extends Migration
             $table->string('code',15)->unique();
             $table->string('name',50);
             $table->string('identification',13);
-            $table->string('representant',50);
             $table->string('address',50)->nullable();
+            $table->string('phone',150)->nullable();
             $table->string('email',60)->nullable();
+            $table->boolean('access_sri',60)->default(false); // indica si lleva la configuración del sri o no
             
             // Montos economicos con los que va a trabajar la empresa
             $table->float('amount_chash',8,2)->default(0); // monto de dinero en efectivo

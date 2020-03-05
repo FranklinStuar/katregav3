@@ -20,6 +20,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('edit', 'Admin\CompanyController@edit')->name('company.edit');
 Route::put('update', 'Admin\CompanyController@update')->name('company.update');
+Route::group(['prefix' => 'sri'], function () {
+    Route::get('edit', 'Admin\SriController@edit')->name('sri.edit');
+    Route::put('update', 'Admin\SriController@update')->name('sri.update');
+});
 Route::resource('products', 'Admin\ProductController');
 Route::resource('groups', 'Admin\ProductGroupController');
 Route::resource('marks', 'Admin\MarkController');

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Sri extends Model
 {
     protected $fillable = [
+        'representant', // se da solo cuando hace uso del sri
         // los códigos para la factura o la nota de venta actuales
         'cod_local_bill', // Número del local
         'cod_terminal_bill', // número de terminal
