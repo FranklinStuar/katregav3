@@ -18,17 +18,20 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('edit', 'Admin\CompanyController@edit')->name('company.edit');
 Route::put('update', 'Admin\CompanyController@update')->name('company.update');
 Route::group(['prefix' => 'sri'], function () {
     Route::get('edit', 'Admin\SriController@edit')->name('sri.edit');
     Route::put('update', 'Admin\SriController@update')->name('sri.update');
 });
-Route::resource('products', 'Admin\ProductController');
+Route::resource('retentions', 'Admin\RetentionController');
+
 Route::resource('groups', 'Admin\ProductGroupController');
 Route::resource('marks', 'Admin\MarkController');
 Route::resource('lines', 'Admin\ProductLineController');
 Route::resource('measurements', 'Admin\MeasurementController');
+Route::resource('products', 'Admin\ProductController');
 Route::resource('services', 'Admin\ServiceController');
 
 Route::resource('clients', 'Admin\ClientController');

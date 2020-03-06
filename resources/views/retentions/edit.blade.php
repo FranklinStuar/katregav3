@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('title-top')
-    Nuevo empleado
+    Editar Retención
 @endsection
 
 @section('title-body')
-    Nuevo empleado
+    Editar Retención
 @endsection
 
 @section('content')
 
   <div class="card card-primary">
-    @include('employees.form',['url'=>route('employees.store'),'edit'=> false])    
+    @include('retentions.form',['url'=>route('retentions.update',$retention->id),'edit'=> true])    
   </div>
   <!-- /.card -->
 

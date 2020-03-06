@@ -19,6 +19,8 @@ class Provider extends Model
         'type_identification',  // tipo de indentificaciòn para indicarnos que es lo que nos entrega le proveedor // ruc, rise, none
         'company_id',
         'type_provider_id',
+        'retention_font',
+        'retention_tax',
     ];
     
     public function company()
@@ -30,4 +32,15 @@ class Provider extends Model
     {
         return $this->belongsTo('App\Models\TypeProvider', 'type_provider_id');
     }
+    
+    public function retentionFont()
+    {
+        return $this->belongsTo('App\Models\Retention', 'retention_font');
+    }
+
+    public function retentionTax()
+    {
+        return $this->belongsTo('App\Models\Retention', 'retention_tax');
+    }
+
 }

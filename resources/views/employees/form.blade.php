@@ -47,6 +47,14 @@
                 <input type="text" name="charge" class="form-control" id="charge" placeholder="Puesto de trabajo" value="{{$employee->charge}}">
             </div>
         </div>
+        <div class="form-group">
+            <label for="type_employee_id" class="col-sm-6">Tipo de empleado <span class="red-text">*</span></label>
+            <select name="type_employee_id" class="form-control" class="col-sm-6" required>
+                @foreach ($types as $type)
+                    <option value="{{$type->id}}" @if($type->id == $employee->type_employee_id) selected @endif>{{$type->name}}</option>
+                @endforeach
+            </select>
+        </div>
         @if($edit)
             <hr>
             <div class="form-group">

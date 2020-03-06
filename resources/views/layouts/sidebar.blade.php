@@ -455,7 +455,13 @@
                     <p>Sri</p>
                   </a>
                 </li>
-              @endif
+                @endif
+                <li class="nav-item">
+                  <a href="{{route('retentions.index')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Retenciones</p>
+                  </a>
+                </li>
             </ul>
           </li>
           
@@ -464,6 +470,12 @@
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>
               <p class="text">Sitios web</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-circle text-info"></i>
+              <p>Fotografía para productos</p>
             </a>
           </li>
           <li class="nav-item">

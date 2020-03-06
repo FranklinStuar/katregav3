@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('title-top')
-    Nuevo empleado
+    Nueva retención
 @endsection
 
 @section('title-body')
-    Nuevo empleado
+    Nueva retención
 @endsection
 
 @section('content')
 
   <div class="card card-primary">
-    @include('employees.form',['url'=>route('employees.store'),'edit'=> false])    
+    @include('retentions.form',['url'=>route('retentions.store'),'edit'=> false])    
   </div>
   <!-- /.card -->
 

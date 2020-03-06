@@ -29,6 +29,8 @@ class Transaction extends Model
          'observation',
          'user_id', // vendedor o comprador cuando corresponda
          'company_id',
+         'retention_font',
+         'retention_tax',
     ];
     
     public function user()
@@ -39,6 +41,16 @@ class Transaction extends Model
     public function company()
     {
         return $this->belongsTo('App\Models\Company');
+    }
+    
+    public function retentionFont()
+    {
+        return $this->belongsTo('App\Models\Retention', 'retention_font');
+    }
+
+    public function retentionTax()
+    {
+        return $this->belongsTo('App\Models\Retention', 'retention_tax');
     }
     
 }

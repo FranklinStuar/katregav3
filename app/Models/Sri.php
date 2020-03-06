@@ -29,6 +29,8 @@ class Sri extends Model
         'retention_electronic', // retenciones
         'remision_guide_electronic', // guias de remision
 
+        'retention_font',
+        'retention_tax',
         'company_id',
     ];
     

@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('title-top')
-    Editar Proveedor
+    Editar Empleado
 @endsection
 
 @section('title-body')
-    Editar Proveedor
+    Editar Empleado
 @endsection
 
 @section('content')

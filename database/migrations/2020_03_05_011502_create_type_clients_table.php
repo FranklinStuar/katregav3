@@ -29,6 +29,9 @@ class CreateTypeClientsTable extends Migration
      */
     public function down()
     {
+        Schema::table('type_clients', function (Blueprint $table) {
+            $table->dropForeign(['company_id']);
+        });
         Schema::dropIfExists('type_clients');
     }
 }

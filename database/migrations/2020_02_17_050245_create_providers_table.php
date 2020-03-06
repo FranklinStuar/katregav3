@@ -25,8 +25,6 @@ class CreateProvidersTable extends Migration
             $table->string('movile',13)->nullable();
             $table->string('country',20)->default('Ecuador');
             $table->enum('type_document',['bill','note_seller']); // factura o nota de venta 
-            $table->float('retention_font',8,2)->default(0); // retención a la fuente
-            $table->float('retention_tax',8,2)->default(0); // retención al iva
             $table->float('deb',8,2)->default(0); // deuda actual que se tiene con el proveedor
             $table->boolean('active')->default(true);
             $table->unsignedBigInteger('company_id');

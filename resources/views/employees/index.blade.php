@@ -30,6 +30,7 @@
           <th>Email</th>
           <th>Salario</th>
           <th>Puesto</th>
+          <th>Tipo</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -58,6 +59,7 @@
             <td>{{$employee->email}}</td>
             <td>$ {{$employee->salary}}</td>
             <td>{{$employee->charge}}</td>
+            <td>@if($employee->type) {{$employee->type->name}} @endif</td>
             <td>
               <a href="{{route('employees.edit',$employee->id)}}" class="btn btn-sm btn-info">Editar</a>
                 <button 

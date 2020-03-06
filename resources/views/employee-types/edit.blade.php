@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('title-top')
-    Nuevo empleado
+    Editar tipo de empleados
 @endsection
 
 @section('title-body')
-    Nuevo empleado
+    Editar tipo de empleados
 @endsection
 
 @section('content')
 
   <div class="card card-primary">
-    @include('employees.form',['url'=>route('employees.store'),'edit'=> false])    
+    @include('employee-types.form',['url'=>route('employee-types.update',$type->id),'edit'=> true])    
   </div>
   <!-- /.card -->
 

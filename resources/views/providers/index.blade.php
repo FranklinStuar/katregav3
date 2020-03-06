@@ -28,6 +28,9 @@
           <th>Teléfono</th>
           <th>Celular</th>
           <th>Email</th>
+          <th>Tipo</th>
+          <th>RF</th>
+          <th>RI</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -54,6 +57,9 @@
             <td>{{$provider->phone}}</td>
             <td>{{$provider->movile}}</td>
             <td>{{$provider->email}}</td>
+            <td>@if($provider->type) {{$provider->type->name}} @endif</td>
+            <td>@if($provider->retention_font) * @endif</td>
+            <td>@if($provider->retention_tax) * @endif</td>
             <td>
               <a href="{{route('providers.edit',$provider->id)}}" class="btn btn-sm btn-info">Editar</a>
                 <button 

@@ -17,7 +17,10 @@ class ProviderController extends Controller
 
     public function create(){
         $provider = new Provider;
-        return view('providers.create',compact('provider'));
+        $types = Auth::user()->company()->providerTypes;
+        $fontRetentions = Auth::user()->company()->retentions->where('destine','font');
+        $taxRetentions = Auth::user()->company()->retentions->where('destine','tax');
+        return view('providers.create',compact('provider','types','fontRetentions','taxRetentions'));
     }
     public function store(Request $request){
         $data = $request->all();
@@ -28,11 +31,18 @@ class ProviderController extends Controller
     }
     public function edit($id){
         $provider = Provider::find($id);
-        return view('providers.edit',compact('provider'));
+        $types = Auth::user()->company()->providerTypes;
+        $fontRetentions = Auth::user()->company()->retentions->where('destine','font');
+        $taxRetentions = Auth::user()->company()->retentions->where('destine','tax');
+        return view('providers.edit',compact('provider','types','fontRetentions','taxRetentions'));
     }
     public function update(Request $request,$id){
         $provider = Provider::find($id);
-        $provider->update($request->all());
+        
+        $data = $request->all();
+        $data['retention_font'] = ($request->retention_font=='none')?null:$request->retention_font;
+        $data['retention_tax'] = ($request->retention_tax=='none')?null:$request->retention_tax;
+        $provider->update($data);
         return redirect()->route('providers.index')
         ->with('success','Proveedor actualizado');
     }

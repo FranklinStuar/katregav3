@@ -18,7 +18,8 @@ class EmployeeController extends Controller
         $employee->journal = 1;
         $employee->salary = 0;
         $employee->journal = 1;
-        return view('employees.create',compact('employee'));
+        $types = Auth::user()->company()->employeeTypes;
+        return view('employees.create',compact('employee','types'));
     }
     public function store(Request $request){
         $data = $request->all();
@@ -29,7 +30,8 @@ class EmployeeController extends Controller
     }
     public function edit($id){
         $employee = Employee::find($id);
-        return view('employees.edit',compact('employee'));
+        $types = Auth::user()->company()->employeeTypes;
+        return view('employees.edit',compact('employee','types'));
     }
     public function update(Request $request,$id){
         $employee = Employee::find($id);

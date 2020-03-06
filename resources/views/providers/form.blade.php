@@ -46,6 +46,38 @@
                 <input type="number" placeholder="1.0" step="0.01" min="0" name="deb" class="form-control col-sm-6" id="deb"  value="{{$provider->deb}}">
             </div>
         @endif
+        <div class="form-group">
+            <label for="type_provider_id" class="col-sm-6">Tipo de proveedor <span class="red-text">*</span></label>
+            <select name="type_provider_id" class="form-control" class="col-sm-6" required>
+                @foreach ($types as $type)
+                    <option value="{{$type->id}}" @if($type->id == $provider->type_provider_id) selected @endif>{{$type->name}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <label for="retention_font">Retención a la fuente <span class="red-text">*</span></label>
+                <select name="retention_font" class="form-control" required>
+                    <option value="none">Sin retención a la fuente</option>
+                    @foreach ($fontRetentions as $retention)
+                        <option value="{{$retention->id}}" @if($retention->id == $provider->retention_font) selected @endif>
+                            {{$retention->code}} - {{$retention->description}} - {{$retention->porcent}}%
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="retention_tax">Retención al IVA <span class="red-text">*</span></label>
+                <select name="retention_tax" class="form-control" required>
+                    <option value="none">Sin retención al IVA</option>
+                    @foreach ($taxRetentions as $retention)
+                        <option value="{{$retention->id}}" @if($retention->id == $provider->retention_tax) selected @endif>
+                            {{$retention->code}} - {{$retention->description}} - {{$retention->porcent}}%
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
         @if($edit)
             <hr>
             <div class="form-group">
