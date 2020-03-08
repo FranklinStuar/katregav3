@@ -27,8 +27,7 @@ class CreateProvidersTable extends Migration
             $table->enum('type_document',['bill','note_seller']); // factura o nota de venta 
             $table->float('deb',8,2)->default(0); // deuda actual que se tiene con el proveedor
             $table->boolean('active')->default(true);
-            $table->unsignedBigInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->unsignedInteger('company_id');
             $table->timestamps();
         });
     }
@@ -41,7 +40,6 @@ class CreateProvidersTable extends Migration
     public function down()
     {
         Schema::table('providers', function (Blueprint $table) {
-            $table->dropForeign(['company_id']);
         });
         Schema::dropIfExists('providers');
     }

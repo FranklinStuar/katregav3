@@ -25,7 +25,6 @@ class CreateInventoriesTable extends Migration
             $table->unsignedBigInteger('product_id');            
             $table->integer('inventory_id'); // id de la tabla que utiliza el inventario
             $table->string('inventory_type'); //nombre de la tabla que utiliza el inventario
-            $table->foreign('product_id')->references('id')->on('products');
             $table->timestamps();
         });
     }
@@ -38,7 +37,6 @@ class CreateInventoriesTable extends Migration
     public function down()
     {
         Schema::table('inventories', function (Blueprint $table) {
-            $table->dropForeign(['product_id']);
         });
         Schema::dropIfExists('inventories');
     }

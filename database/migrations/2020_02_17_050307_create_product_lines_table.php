@@ -16,8 +16,7 @@ class CreateProductLinesTable extends Migration
         Schema::create('product_lines', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name',80);
-            $table->unsignedBigInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->unsignedInteger('company_id');
             $table->timestamps();
         });
     }
@@ -30,7 +29,6 @@ class CreateProductLinesTable extends Migration
     public function down()
     {
         Schema::table('product_lines', function (Blueprint $table) {
-            $table->dropForeign(['company_id']);
         });
         Schema::dropIfExists('product_lines');
     }

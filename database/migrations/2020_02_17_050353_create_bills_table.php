@@ -39,10 +39,7 @@ class CreateBillsTable extends Migration
             $table->enum('status',['none','send','error','anull'])->default('none'); // el estado para la facturación electrónica
             $table->unsignedBigInteger('user_id'); // vendedor
             $table->unsignedBigInteger('client_id');
-            $table->unsignedBigInteger('company_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('client_id')->references('id')->on('clients');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->unsignedInteger('company_id');
 
             $table->string('pdf_print'); // se genera un pdf de la factura a imprimir en base a una plantilla, seguridad en caso de modificacin de datos
             $table->string('xml_sri')->nullable(); // xml generado por el sistema para ser enviado al sri
@@ -61,9 +58,6 @@ class CreateBillsTable extends Migration
     public function down()
     {
         Schema::table('bills', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
-            $table->dropForeign(['client_id']);
-            $table->dropForeign(['company_id']);
         });
         Schema::dropIfExists('bills');
     }

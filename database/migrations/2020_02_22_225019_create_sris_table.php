@@ -39,8 +39,7 @@ class CreateSrisTable extends Migration
             $table->boolean('retention_electronic')->default(false); // retenciones
             $table->boolean('remision_guide_electronic')->default(false); // guias de remision
 
-            $table->unsignedBigInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->unsignedInteger('company_id');
             $table->timestamps();
         });
     }
@@ -53,7 +52,6 @@ class CreateSrisTable extends Migration
     public function down()
     {
         Schema::table('sris', function (Blueprint $table) {
-            $table->dropForeign(['company_id']);
         });
         Schema::dropIfExists('sris');
     }

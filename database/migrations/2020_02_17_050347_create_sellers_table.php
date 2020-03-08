@@ -28,8 +28,6 @@ class CreateSellersTable extends Migration
             $table->enum('status',['active','canceled','anull'])->default('active'); // 
             $table->unsignedBigInteger('transaction_id');
             $table->unsignedBigInteger('client_id');
-            $table->foreign('transaction_id')->references('id')->on('transactions');
-            $table->foreign('client_id')->references('id')->on('clients');
             $table->timestamps();
         });
     }
@@ -42,8 +40,6 @@ class CreateSellersTable extends Migration
     public function down()
     {
         Schema::table('sellers', function (Blueprint $table) {
-            $table->dropForeign(['transaction_id']);
-            $table->dropForeign(['client_id']);
         });
         Schema::dropIfExists('sellers');
     }

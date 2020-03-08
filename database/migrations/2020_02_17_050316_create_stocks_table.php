@@ -33,10 +33,7 @@ class CreateStocksTable extends Migration
             $table->double('disscount_special',5,2)->default(0); // descuento especial en porcentaje
             $table->unsignedBigInteger('measurement_id');
             $table->unsignedBigInteger('product_group_id');
-            $table->unsignedBigInteger('company_id');
-            $table->foreign('measurement_id')->references('id')->on('measurements');
-            $table->foreign('product_group_id')->references('id')->on('product_groups');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->unsignedInteger('company_id');
             $table->timestamps();
         });
     }
@@ -49,9 +46,6 @@ class CreateStocksTable extends Migration
     public function down()
     {
         Schema::table('stocks', function (Blueprint $table) {
-            $table->dropForeign(['measurement_id']);
-            $table->dropForeign(['product_group_id']);
-            $table->dropForeign(['company_id']);
         });
         Schema::dropIfExists('stocks');
     }

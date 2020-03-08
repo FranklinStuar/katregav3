@@ -28,8 +28,7 @@ class CreateClientsTable extends Migration
             $table->float('deb',8,2)->default(0); // deuda actual que tiene el cliente
             $table->float('credit',8,2)->default(0); // Máximo que se le permite tener deuda al cliente
             $table->boolean('active')->default(true); // Si está disponible su uso 
-            $table->unsignedBigInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->unsignedInteger('company_id');
             $table->timestamps();
         });
     }
@@ -42,7 +41,6 @@ class CreateClientsTable extends Migration
     public function down()
     {
         Schema::table('clients', function (Blueprint $table) {
-            $table->dropForeign(['company_id']);
         });
         Schema::dropIfExists('clients');
     }

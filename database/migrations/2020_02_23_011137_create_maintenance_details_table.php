@@ -19,7 +19,6 @@ class CreateMaintenanceDetailsTable extends Migration
             $table->string('comment');
             $table->string('repsonsable');
             $table->unsignedBigInteger('maintenance_id');
-            $table->foreign('maintenance_id')->references('id')->on('maintenances');
             $table->timestamps();
         });
     }
@@ -32,7 +31,6 @@ class CreateMaintenanceDetailsTable extends Migration
     public function down()
     {
         Schema::table('maintenance_details', function (Blueprint $table) {
-            $table->dropForeign(['maintenance_id']);
         });
         Schema::dropIfExists('maintenance_details');
     }

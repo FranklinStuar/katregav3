@@ -18,7 +18,6 @@ class AddBillToSellersTable extends Migration
         Schema::table('sellers', function (Blueprint $table) {
             //
             $table->unsignedBigInteger('bill_id')->nullable();
-            $table->foreign('bill_id')->references('id')->on('bills');
         });
     }
 
@@ -30,7 +29,6 @@ class AddBillToSellersTable extends Migration
     public function down()
     {
         Schema::table('sellers', function (Blueprint $table) {
-            $table->dropForeign(['bill_id']);
         });
     }
 }

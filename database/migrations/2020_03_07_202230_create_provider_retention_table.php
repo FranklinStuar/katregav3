@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnsToProvidersTable extends Migration
+class CreateProviderRetentionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddColumnsToProvidersTable extends Migration
      */
     public function up()
     {
-        Schema::table('providers', function (Blueprint $table) {
-            $table->unsignedInteger('type_provider_id')->nullable();
+        Schema::create('provider_retention', function (Blueprint $table) {
+            $table->unsignedBigInteger('provider_id');
+            $table->unsignedInteger('retention_id');
         });
     }
 
@@ -25,7 +26,8 @@ class AddColumnsToProvidersTable extends Migration
      */
     public function down()
     {
-        Schema::table('providers', function (Blueprint $table) {
+        Schema::table('provider_retention', function (Blueprint $table) {
         });
+        Schema::dropIfExists('provider_retention');
     }
 }

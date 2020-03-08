@@ -20,9 +20,6 @@ class CreateProformsTable extends Migration
             $table->unsignedBigInteger('transaction_id');
             $table->unsignedBigInteger('seller_id')->nullable();
             $table->unsignedBigInteger('client_id');
-            $table->foreign('transaction_id')->references('id')->on('transactions');
-            $table->foreign('seller_id')->references('id')->on('sellers');
-            $table->foreign('client_id')->references('id')->on('clients');
             $table->timestamps();
         });
     }
@@ -35,9 +32,6 @@ class CreateProformsTable extends Migration
     public function down()
     {
         Schema::table('proforms', function (Blueprint $table) {
-            $table->dropForeign(['transaction_id']);
-            $table->dropForeign(['seller_id']);
-            $table->dropForeign(['client_id']);
         });
         Schema::dropIfExists('proforms');
     }

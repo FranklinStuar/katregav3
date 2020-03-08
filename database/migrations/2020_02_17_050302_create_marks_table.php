@@ -16,8 +16,7 @@ class CreateMarksTable extends Migration
         Schema::create('marks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name',80);
-            $table->unsignedBigInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->unsignedInteger('company_id');
             $table->timestamps();
         });
     }
@@ -30,7 +29,6 @@ class CreateMarksTable extends Migration
     public function down()
     {
         Schema::table('marks', function (Blueprint $table) {
-            $table->dropForeign(['company_id']);
         });
         Schema::dropIfExists('marks');
     }

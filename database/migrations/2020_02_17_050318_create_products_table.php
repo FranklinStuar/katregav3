@@ -23,9 +23,6 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('mark_id');
             $table->unsignedBigInteger('line_id');
             $table->unsignedBigInteger('stock_id');
-            $table->foreign('mark_id')->references('id')->on('marks');
-            $table->foreign('line_id')->references('id')->on('product_lines');
-            $table->foreign('stock_id')->references('id')->on('stocks');
             $table->timestamps();
         });
     }
@@ -38,9 +35,6 @@ class CreateProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropForeign(['mark_id']);
-            $table->dropForeign(['line_id']);
-            $table->dropForeign(['stock_id']);
         });
         Schema::dropIfExists('products');
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTypeClientsTable extends Migration
+class CreateCompanyRetentionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateTypeClientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('type_clients', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name',80);
+        Schema::create('company_retention', function (Blueprint $table) {
             $table->unsignedInteger('company_id');
-            $table->timestamps();
+            $table->unsignedInteger('retention_id');
         });
     }
 
@@ -28,8 +26,8 @@ class CreateTypeClientsTable extends Migration
      */
     public function down()
     {
-        Schema::table('type_clients', function (Blueprint $table) {
+        Schema::table('company_retention', function (Blueprint $table) {
         });
-        Schema::dropIfExists('type_clients');
+        Schema::dropIfExists('company_retention');
     }
 }

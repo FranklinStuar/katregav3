@@ -24,8 +24,6 @@ class CreateBillDetailsTable extends Migration
             $table->float('total',8,2);
             $table->unsignedBigInteger('stock_id');
             $table->unsignedBigInteger('bill_id');
-            $table->foreign('stock_id')->references('id')->on('stocks');
-            $table->foreign('bill_id')->references('id')->on('bills');
             $table->timestamps();
         });
     }
@@ -38,8 +36,6 @@ class CreateBillDetailsTable extends Migration
     public function down()
     {
         Schema::table('bill_details', function (Blueprint $table) {
-            $table->dropForeign(['stock_id']);
-            $table->dropForeign(['bill_id']);
         });
         Schema::dropIfExists('bill_details');
     }

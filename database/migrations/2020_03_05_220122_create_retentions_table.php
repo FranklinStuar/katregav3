@@ -20,8 +20,7 @@ class CreateRetentionsTable extends Migration
             $table->float('porcent',5,2);
             $table->enum('destine',['font','tax']); // retención a la fuente o al iva
             $table->enum('type',['m','s'])->default('m'); // mercaderia o servicio
-            $table->unsignedBigInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->unsignedInteger('company_id');
             $table->timestamps();
         });
     }
@@ -34,7 +33,6 @@ class CreateRetentionsTable extends Migration
     public function down()
     {
         Schema::table('retentions', function (Blueprint $table) {
-            $table->dropForeign(['company_id']);
         });
         Schema::dropIfExists('retentions');
     }

@@ -17,8 +17,6 @@ class CreateDebPurchasesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('purchase_id');
             $table->unsignedBigInteger('deb_id');
-            $table->foreign('purchase_id')->references('id')->on('purchases');
-            $table->foreign('deb_id')->references('id')->on('debs');
         });
     }
 
@@ -30,8 +28,6 @@ class CreateDebPurchasesTable extends Migration
     public function down()
     {
         Schema::table('deb_purchases', function (Blueprint $table) {
-            $table->dropForeign(['purchase_id']);
-            $table->dropForeign(['deb_id']);
         });
         Schema::dropIfExists('deb_purchases');
     }

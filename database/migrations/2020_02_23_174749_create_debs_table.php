@@ -20,8 +20,7 @@ class CreateDebsTable extends Migration
             $table->date('date_payed'); // fecha en la que cancela todo, 
             $table->float('amount',7,2); // monto que se registra en deuda
             $table->float('amount_payed',7,2); // monto que ha pagado, puede ser en su totalidad o parcial
-            $table->unsignedBigInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->unsignedInteger('company_id');
             $table->timestamps(); // fechas de registro y modificacion
         });
     }
@@ -34,7 +33,6 @@ class CreateDebsTable extends Migration
     public function down()
     {
         Schema::table('debs', function (Blueprint $table) {
-            $table->dropForeign(['company_id']);
         });
         Schema::dropIfExists('debs');
     }

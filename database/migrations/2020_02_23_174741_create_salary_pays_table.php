@@ -24,7 +24,6 @@ class CreateSalaryPaysTable extends Migration
             $table->float('advance',7,2); // anticipos
             $table->float('discount',7,2); // descuentos en caso de existir
             $table->unsignedBigInteger('employee_id');
-            $table->foreign('employee_id')->references('id')->on('employees');
             $table->timestamps();
         });
     }
@@ -37,7 +36,6 @@ class CreateSalaryPaysTable extends Migration
     public function down()
     {
         Schema::table('salary_pays', function (Blueprint $table) {
-            $table->dropForeign(['employee_id']);
         });
         Schema::dropIfExists('salary_pays');
     }

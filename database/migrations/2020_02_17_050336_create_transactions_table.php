@@ -23,6 +23,7 @@ class CreateTransactionsTable extends Migration
             $table->float('total_credit',8,2)->default(0); // total del dinero que se da a credito
             $table->tinyInteger('time_credit')->default(0); // tiempo que se le da crédito o se recive crédito con la operacion
             // montos internos de la facturación
+            $table->float('total',8,2); // Total de la transaccion
             $table->float('total_tax',8,2);
             $table->float('total_not_tax',8,2);
             $table->float('tax',8,2);
@@ -35,9 +36,7 @@ class CreateTransactionsTable extends Migration
             $table->float('transport',8,2);
             $table->string('observation',200)->nullable();
             $table->unsignedBigInteger('user_id'); // vendedor o comprador cuando corresponda
-            $table->unsignedBigInteger('company_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->unsignedInteger('company_id');
             $table->timestamps();
         });
     }
@@ -50,8 +49,6 @@ class CreateTransactionsTable extends Migration
     public function down()
     {
         Schema::table('transactions', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
-            $table->dropForeign(['company_id']);
         });
         Schema::dropIfExists('transactions');
     }

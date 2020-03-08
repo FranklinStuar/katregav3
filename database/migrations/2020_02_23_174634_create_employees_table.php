@@ -28,9 +28,7 @@ class CreateEmployeesTable extends Migration
             $table->float('advance',7,2)->default(0); // anticipos en caso que lo tenga
             $table->boolean('active')->default(true);
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('company_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->unsignedInteger('company_id');
             $table->timestamps();
         });
     }
@@ -43,8 +41,6 @@ class CreateEmployeesTable extends Migration
     public function down()
     {
         Schema::table('employees', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
-            $table->dropForeign(['company_id']);
         });
         Schema::dropIfExists('employees');
     }

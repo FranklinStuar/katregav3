@@ -21,10 +21,7 @@ class CreateMaintenancesTable extends Migration
             $table->date('next_maintenance')->nullable(); // fecha de la proxima revision en caso de existir
             $table->unsignedBigInteger('seller_id')->nullable(); // en caso que el mantenimiento esté vinvulado a alguna venta en concreto, nulo porque puede dar mantenimiento gratuito al ser panas o algo parecido
             $table->unsignedBigInteger('client_id');
-            $table->unsignedBigInteger('company_id');
-            $table->foreign('seller_id')->references('id')->on('clients');
-            $table->foreign('client_id')->references('id')->on('companies');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->unsignedInteger('company_id');
             $table->timestamps();
         });
     }
@@ -37,9 +34,6 @@ class CreateMaintenancesTable extends Migration
     public function down()
     {
         Schema::table('maintenances', function (Blueprint $table) {
-            $table->dropForeign(['seller_id']);
-            $table->dropForeign(['client_id']);
-            $table->dropForeign(['company_id']);
         });
         Schema::dropIfExists('maintenances');
     }

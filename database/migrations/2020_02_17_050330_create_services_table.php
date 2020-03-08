@@ -16,7 +16,6 @@ class CreateServicesTable extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('stock_id');
-            $table->foreign('stock_id')->references('id')->on('stocks');
             $table->timestamps();
         });
     }
@@ -29,7 +28,6 @@ class CreateServicesTable extends Migration
     public function down()
     {
         Schema::table('services', function (Blueprint $table) {
-            $table->dropForeign(['stock_id']);
         });
         Schema::dropIfExists('services');
     }

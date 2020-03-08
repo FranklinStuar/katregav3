@@ -23,9 +23,6 @@ class CreateOrderSellersTable extends Migration
             $table->unsignedBigInteger('seller_id')->nullable(); // cuando se termine se efectua en venta
             $table->unsignedBigInteger('transaction_id');
             $table->unsignedBigInteger('client_id');
-            $table->foreign('seller_id')->references('id')->on('sellers');
-            $table->foreign('transaction_id')->references('id')->on('transactions');
-            $table->foreign('client_id')->references('id')->on('clients');
             $table->timestamps();
         });
     }
@@ -38,9 +35,6 @@ class CreateOrderSellersTable extends Migration
     public function down()
     {
         Schema::table('order_sellers', function (Blueprint $table) {
-            $table->dropForeign(['seller_id']);
-            $table->dropForeign(['transaction_id']);
-            $table->dropForeign(['client_id']);
         });
         Schema::dropIfExists('order_sellers');
     }

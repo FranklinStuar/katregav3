@@ -18,7 +18,6 @@ class CreateControlJornadasTable extends Migration
             $table->timestamp('into')->nullable(); // hora de ingreso
             $table->timestamp('exit')->nullable(); // hora de salida
             $table->unsignedBigInteger('employee_id');
-            $table->foreign('employee_id')->references('id')->on('employees');
             $table->timestamps();
         });
     }
@@ -31,7 +30,6 @@ class CreateControlJornadasTable extends Migration
     public function down()
     {
         Schema::table('control_jornadas', function (Blueprint $table) {
-            $table->dropForeign(['employee_id']);
         });
         Schema::dropIfExists('control_jornadas');
     }

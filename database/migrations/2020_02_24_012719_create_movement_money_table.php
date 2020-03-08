@@ -24,8 +24,7 @@ class CreateMovementMoneyTable extends Migration
             // de momento se tiene pensado en compras, ventas, cambio de banco a efectivo y viceversa
             $table->tinyInteger('type'); 
             $table->string('responsable'); // se agrega solo el nombre de la persona indicada
-            $table->unsignedBigInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->unsignedInteger('company_id');
             $table->timestamps();
         });
     }
@@ -38,7 +37,6 @@ class CreateMovementMoneyTable extends Migration
     public function down()
     {
         Schema::table('movement_money', function (Blueprint $table) {
-            $table->dropForeign(['company_id']);
         });
         Schema::dropIfExists('movement_money');
     }

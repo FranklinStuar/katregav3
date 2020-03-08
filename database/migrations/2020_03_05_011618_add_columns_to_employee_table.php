@@ -15,7 +15,6 @@ class AddColumnsToEmployeeTable extends Migration
     {
         Schema::table('employees', function (Blueprint $table) {
             $table->unsignedInteger('type_employee_id')->nullable();
-            $table->foreign('type_employee_id')->references('id')->on('type_employees');
         });
     }
 
@@ -27,7 +26,6 @@ class AddColumnsToEmployeeTable extends Migration
     public function down()
     {
         Schema::table('employees', function (Blueprint $table) {
-            $table->dropForeign(['type_employee_id']);
         });
     }
 }

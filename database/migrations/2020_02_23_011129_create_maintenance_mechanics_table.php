@@ -19,7 +19,6 @@ class CreateMaintenanceMechanicsTable extends Migration
             $table->integer('km_finish')->default(0); // kilometraje con el que sale
             $table->integer('next_change')->default(0); // cuando es el siguiente cambio 
             $table->unsignedBigInteger('maintenance_id');
-            $table->foreign('maintenance_id')->references('id')->on('maintenances');
             $table->timestamps();
         });
     }
@@ -32,7 +31,6 @@ class CreateMaintenanceMechanicsTable extends Migration
     public function down()
     {
         Schema::table('maintenance_mechanics', function (Blueprint $table) {
-            $table->dropForeign(['maintenance_id']);
         });
         Schema::dropIfExists('maintenance_mechanics');
     }
