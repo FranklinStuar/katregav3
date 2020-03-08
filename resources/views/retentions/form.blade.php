@@ -6,22 +6,26 @@
     @endif
     <div class="card-body">
         <div class="form-group">
-            <label for="code">Código</label>
+            <label for="code">Código <span class="red-text">*</span></label>
             <input type="text" name="code" class="form-control" id="code" placeholder="Código" value="{{$retention->code}}" required>
         </div>
         <div class="form-group">
-            <label for="description">Descripción</label>
+            <label for="code_anex">Código Anexo</label>
+            <input type="text" name="code_anex" class="form-control" id="code_anex" placeholder="Código" value="{{$retention->code_anex}}">
+        </div>
+        <div class="form-group">
+            <label for="description">Descripción <span class="red-text">*</span></label>
             <input type="text" name="description" class="form-control" id="description" placeholder="Descripción" value="{{$retention->description}}" required>
         </div>
         <div class="form-group">
-            <label for="porcent" >Porcentaje</label>
+            <label for="porcent" >Porcentaje <span class="red-text">*</span></label>
             <input type="number" placeholder="1.0" step="0.01" min="0" name="porcent" class="form-control" id="porcent" value="{{$retention->porcent}}" required>
         </div>
         <div class="form-group">
             <label for="destine" class="col-sm-6">Destino de la retención <span class="red-text">*</span></label>
             <select name="destine" class="form-control" class="col-sm-6" required>
-                <option value="font" @if($retention->destine == "font") selected @endif>Retención a la fuente</option>
-                <option value="tax" @if($retention->destine == "tax") selected @endif>Retención al IVA</option>
+                <option value="0" @if($retention->destine == "0") selected @endif>Retención a la fuente</option>
+                <option value="1" @if($retention->destine == "1") selected @endif>Retención al IVA</option>
             </select>
         </div>
 

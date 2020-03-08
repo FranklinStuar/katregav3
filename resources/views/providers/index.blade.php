@@ -29,8 +29,6 @@
           <th>Celular</th>
           <th>Email</th>
           <th>Tipo</th>
-          <th>RF</th>
-          <th>RI</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -58,10 +56,9 @@
             <td>{{$provider->movile}}</td>
             <td>{{$provider->email}}</td>
             <td>@if($provider->type) {{$provider->type->name}} @endif</td>
-            <td>@if($provider->retention_font) * @endif</td>
-            <td>@if($provider->retention_tax) * @endif</td>
             <td>
-              <a href="{{route('providers.edit',$provider->id)}}" class="btn btn-sm btn-info">Editar</a>
+              <a href="{{route('providers.edit',$provider->id)}}" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+              <a href="{{route('providers.retentions',$provider->id)}}" class="btn btn-sm btn-primary"><i class="fas fa-hand-holding-usd"></i></a>
                 <button 
                     class="delete btn btn-sm btn-outline-danger" 
                     onclick="deleteItem(

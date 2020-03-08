@@ -15,4 +15,15 @@
   </div>
   <!-- /.card -->
 
+  
+    @include('retentions.card',
+      [
+        'titleRetention' => 'Retenciones',
+        'retentionsList'=>$retentions,
+        'retentionsIntern'=>$sri->company->retentionsIntern,
+        'urlAdd' => route('sri.add-retention'),
+        'urlRemove' => 'sri.remove-retention',
+      ])
+  
+
 @endsection

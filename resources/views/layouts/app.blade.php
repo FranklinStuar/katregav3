@@ -23,7 +23,7 @@
 	@include('layouts.token') {{-- token para laravel --}}
 </head>
 
-<body class="sidebar-mini layout-fixed">
+<body class="sidebar-mini layout-fixed @yield('sidebar-functions')">
 <!-- Site wrapper -->
 <div class="wrapper">
 	

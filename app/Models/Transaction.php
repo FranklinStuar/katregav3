@@ -16,6 +16,7 @@ class Transaction extends Model
          'total_credit', // total del dinero que se da a credito
          'time_credit', // tiempo que se le da crédito o se recive crédito con la operacion
          // montos internos de la facturación
+         'total', // Total de la transaccion
          'total_tax',
          'total_not_tax',
          'tax',
@@ -29,8 +30,6 @@ class Transaction extends Model
          'observation',
          'user_id', // vendedor o comprador cuando corresponda
          'company_id',
-         'retention_font',
-         'retention_tax',
     ];
     
     public function user()
@@ -42,15 +41,10 @@ class Transaction extends Model
     {
         return $this->belongsTo('App\Models\Company');
     }
-    
-    public function retentionFont()
-    {
-        return $this->belongsTo('App\Models\Retention', 'retention_font');
-    }
 
-    public function retentionTax()
+    public function retentions()
     {
-        return $this->belongsTo('App\Models\Retention', 'retention_tax');
+        return $this->belongsToMany('App\Models\Retention', 'provider_retention');
     }
     
 }

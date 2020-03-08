@@ -24,9 +24,6 @@ class Company extends Model
         // Montos economicos con los que va a trabajar la empresa
         'amount_chash',
         'amount_bank',
-        'retention_font',
-        'retention_tax',
-        
     ];
 
 
@@ -38,6 +35,11 @@ class Company extends Model
     public function services()
     {
         return $this->hasManyThrough('App\Models\Service', 'App\Models\Stock','company_id','stock_id');
+    }
+
+    public function purchases()
+    {
+        return $this->hasManyThrough('App\Models\Purchase', 'App\Models\Transaction','company_id','transaction_id');
     }
 
     public function clients()
@@ -115,16 +117,11 @@ class Company extends Model
         return $this->hasOne('App\Models\Sri','company_id');
     }
     
-    public function retentionFont()
+    public function retentionsIntern()
     {
-        return $this->belongsTo('App\Models\Retention', 'retention_font');
+        return $this->belongsToMany('App\Models\Retention', 'company_retention');
     }
-
-    public function retentionTax()
-    {
-        return $this->belongsTo('App\Models\Retention', 'retention_tax');
-    }
-
+    
     public function retentions()
     {
         return $this->hasMany('App\Models\Retention');

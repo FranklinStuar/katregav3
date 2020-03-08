@@ -24,6 +24,8 @@ Route::put('update', 'Admin\CompanyController@update')->name('company.update');
 Route::group(['prefix' => 'sri'], function () {
     Route::get('edit', 'Admin\SriController@edit')->name('sri.edit');
     Route::put('update', 'Admin\SriController@update')->name('sri.update');
+    Route::post('add-retention', 'Admin\SriController@addRetention')->name('sri.add-retention');
+    Route::delete('remove-retention/{retention_id}', 'Admin\SriController@removeRetention')->name('sri.remove-retention');
 });
 Route::resource('retentions', 'Admin\RetentionController');
 
@@ -44,3 +46,9 @@ Route::resource('employee-types', 'Admin\TypeEmployeeController');
 
 Route::resource('providers', 'Admin\ProviderController');
 Route::resource('provider-types', 'Admin\TypeProviderController');
+
+Route::get('provider/{id}/providers-retentions', 'Admin\ProviderController@addRetention')->name('providers.retentions');
+Route::post('provider/{id}/add-retention', 'Admin\ProviderController@addRetention')->name('provider.add-retention');
+Route::delete('provider/{id}/remove-retention/{retention_id}', 'Admin\ProviderController@removeRetention')->name('provider.remove-retention');
+
+Route::resource('purchases', 'Admin\PurchaseController');

@@ -18,9 +18,7 @@ class ProviderController extends Controller
     public function create(){
         $provider = new Provider;
         $types = Auth::user()->company()->providerTypes;
-        $fontRetentions = Auth::user()->company()->retentions->where('destine','font');
-        $taxRetentions = Auth::user()->company()->retentions->where('destine','tax');
-        return view('providers.create',compact('provider','types','fontRetentions','taxRetentions'));
+        return view('providers.create',compact('provider','types','retentions'));
     }
     public function store(Request $request){
         $data = $request->all();
@@ -31,17 +29,13 @@ class ProviderController extends Controller
     }
     public function edit($id){
         $provider = Provider::find($id);
-        $types = Auth::user()->company()->providerTypes;
-        $fontRetentions = Auth::user()->company()->retentions->where('destine','font');
-        $taxRetentions = Auth::user()->company()->retentions->where('destine','tax');
-        return view('providers.edit',compact('provider','types','fontRetentions','taxRetentions'));
+        $types = Auth::user()->company()->providerTypes;        
+        return view('providers.edit',compact('provider','types'));
     }
     public function update(Request $request,$id){
         $provider = Provider::find($id);
         
         $data = $request->all();
-        $data['retention_font'] = ($request->retention_font=='none')?null:$request->retention_font;
-        $data['retention_tax'] = ($request->retention_tax=='none')?null:$request->retention_tax;
         $provider->update($data);
         return redirect()->route('providers.index')
         ->with('success','Proveedor actualizado');
@@ -52,6 +46,25 @@ class ProviderController extends Controller
         if($provider->delete())
             return response()->json(['message'=> "Proveedor eliminado correctamente",'url'=> route('providers.index')]);
         return response()->json(['message' => "Proveedor no eliminado"],403);
+    }
+
+    public function retentionIndex($id){
+        $provider = Provider::find($id);
+        $retentions = \Auth::user()->company()->retentions->whereNotIn('id',$provider->retentions->pluck('id'));
+        return view('providers.retentions',compact('provider','retentions'));
+    }
+
+    public function addRetention(Request $request,$id){
+        $provider = Provider::find($id);
+        $provider->retentions()->attach($request->retention_id);
+        return redirect()->back()
+        ->with('success','Retención agregada');
+    }
+
+    public function removeRetention($id,$retention_id){
+        $provider = Provider::find($id);
+        $provider->retentions()->detach($retention_id);
+            return response()->json(['message'=> "Retención eliminada",'url'=> route('providers.retentions')]);
     }
 
 }

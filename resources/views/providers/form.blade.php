@@ -11,7 +11,7 @@
         </div>
         
         <div class="form-group">
-            <label for="type_identification" class="col-sm-6">Tipo de Identificaciòn <span class="red-text">*</span></label>
+            <label for="type_identification" class="col-sm-6">Tipo de Identificación <span class="red-text">*</span></label>
             <select name="type_identification" class="form-control" class="col-sm-6" required>
                 <option value="none" @if($provider->type_identification == 'none') selected @endif>Ninguno</option>
                 <option value="ruc" @if($provider->type_identification == 'ruc') selected @endif>RUC</option>
@@ -53,30 +53,6 @@
                     <option value="{{$type->id}}" @if($type->id == $provider->type_provider_id) selected @endif>{{$type->name}}</option>
                 @endforeach
             </select>
-        </div>
-        <div class="row">
-            <div class="form-group col-sm-6">
-                <label for="retention_font">Retención a la fuente <span class="red-text">*</span></label>
-                <select name="retention_font" class="form-control" required>
-                    <option value="none">Sin retención a la fuente</option>
-                    @foreach ($fontRetentions as $retention)
-                        <option value="{{$retention->id}}" @if($retention->id == $provider->retention_font) selected @endif>
-                            {{$retention->code}} - {{$retention->description}} - {{$retention->porcent}}%
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="form-group col-sm-6">
-                <label for="retention_tax">Retención al IVA <span class="red-text">*</span></label>
-                <select name="retention_tax" class="form-control" required>
-                    <option value="none">Sin retención al IVA</option>
-                    @foreach ($taxRetentions as $retention)
-                        <option value="{{$retention->id}}" @if($retention->id == $provider->retention_tax) selected @endif>
-                            {{$retention->code}} - {{$retention->description}} - {{$retention->porcent}}%
-                        </option>
-                    @endforeach
-                </select>
-            </div>
         </div>
         @if($edit)
             <hr>

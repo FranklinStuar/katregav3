@@ -16,9 +16,10 @@ class CreateRetentionsTable extends Migration
         Schema::create('retentions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('code',10);
-            $table->string('description',100);
+            $table->string('code_anex',10)->nullable();
+            $table->string('description',220);
             $table->float('porcent',5,2);
-            $table->enum('destine',['font','tax']); // retención a la fuente o al iva
+            $table->tinyInteger('destine'); // retención a la fuente, al iva u otros
             $table->enum('type',['m','s'])->default('m'); // mercaderia o servicio
             $table->unsignedInteger('company_id');
             $table->timestamps();

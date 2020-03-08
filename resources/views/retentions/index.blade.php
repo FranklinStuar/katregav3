@@ -21,6 +21,7 @@
       <thead>
         <tr>
           <th>Código</th>
+          <th>Código Anexo</th>
           <th>Descripción</th>
           <th>Porcentaje</th>
           <th>Destino</th>
@@ -31,9 +32,10 @@
         @foreach ($retentions as $retention)
           <tr>
             <td>{{$retention->code}}</td>
+            <td>{{$retention->code_anex}}</td>
             <td>{{$retention->description}}</td>
             <td>{{$retention->porcent}}</td>
-            <td>@if($retention->destine=='font') Fuente @elseif($retention->destine=='tax') IVA @endif</td>
+            <td>@if($retention->destine==0) Fuente @elseif($retention->destine==1) IVA @endif</td>
             <td>
               <a href="{{route('retentions.edit',$retention->id)}}" class="btn btn-sm btn-info">Editar</a>
                 <button 
