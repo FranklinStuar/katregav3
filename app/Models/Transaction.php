@@ -10,13 +10,11 @@ class Transaction extends Model
     protected $fillable = [
          //Forma en la que se paga
          'type_price', // 1 a 5 de los precios elegidos para los productos
-         'total_credit_card', // total del dinero que se paga con tarjeta de crédito
-         'total_debit_card', // total del dinero que se paga con tarjeta de débito
          'total_cash', // total del dinero que se da en efectivo
          'total_credit', // total del dinero que se da a credito
-         'time_credit', // tiempo que se le da crédito o se recive crédito con la operacion
+         'total_checkbook', // total que se ha pagado o cobrado en cheque
          // montos internos de la facturación
-         'total', // Total de la transaccion
+         'total', // Total final de la transaccion
          'total_tax',
          'total_not_tax',
          'tax',

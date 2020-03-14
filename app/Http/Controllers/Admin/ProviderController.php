@@ -51,7 +51,7 @@ class ProviderController extends Controller
     public function retentionIndex($id){
         $provider = Provider::find($id);
         $retentions = \Auth::user()->company()->retentions->whereNotIn('id',$provider->retentions->pluck('id'));
-        return view('providers.retentions',compact('provider','retentions'));
+        return view('providers.providers-retentions',compact('provider','retentions'));
     }
 
     public function addRetention(Request $request,$id){

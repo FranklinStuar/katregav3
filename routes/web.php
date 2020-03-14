@@ -47,7 +47,7 @@ Route::resource('employee-types', 'Admin\TypeEmployeeController');
 Route::resource('providers', 'Admin\ProviderController');
 Route::resource('provider-types', 'Admin\TypeProviderController');
 
-Route::get('provider/{id}/providers-retentions', 'Admin\ProviderController@addRetention')->name('providers.retentions');
+Route::get('provider/{id}/providers-retentions', 'Admin\ProviderController@retentionIndex')->name('providers.retentions');
 Route::post('provider/{id}/add-retention', 'Admin\ProviderController@addRetention')->name('provider.add-retention');
 Route::delete('provider/{id}/remove-retention/{retention_id}', 'Admin\ProviderController@removeRetention')->name('provider.remove-retention');
 

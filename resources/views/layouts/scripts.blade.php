@@ -27,5 +27,9 @@
     }
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
+
+        
     })
+    
 </script>
+@yield('scripts-bottom')
