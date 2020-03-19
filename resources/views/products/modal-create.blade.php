@@ -15,18 +15,18 @@
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="identification">Codigo</label>
-                            <input type="text" name="identification" class="form-control" id="identification" placeholder="Codigo" value="">
+                            <label for="code-product">Codigo</label>
+                            <input type="text" name="code-product" class="form-control" id="code-product" placeholder="Codigo" value="">
                         </div>
                         
                         <div class="form-group">
-                            <label for="identification">Nombre</label>
-                            <input type="text" name="identification" class="form-control" id="identification" placeholder="Nombre" value="">
+                            <label for="name-product">Nombre</label>
+                            <input type="text" name="name-product" class="form-control" id="name-product" placeholder="Nombre" value="">
                         </div>
                         
                         <div class="form-group">
-                            <label for="type_identification" class="col-sm-6">IVA <span class="red-text">*</span></label>
-                            <select name="type_identification" class="form-control" class="col-sm-6" required>
+                            <label for="tax-product" class="col-sm-6">IVA <span class="red-text">*</span></label>
+                            <select name="tax-product" id="tax-product" class="form-control" class="col-sm-6" required>
                                 <option value="1">Tiene IVA</option>
                                 <option value="0">NO Tiene IVA</option>
                             </select>

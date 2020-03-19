@@ -61,7 +61,7 @@
                                         <td><span style="width:150px" class="form-control">CJEP260</span></td>
                                         <td><span style="width:150px" class="form-control">Cooperativa Jep</span></td>
                                         <td><input type="text" class="form-control" style="width:200px" value="12398721398" ></td>
-                                        <td><input type="date" class="form-control" style="width:200px" value="01/01/2020" ></td>
+                                        <td><input type="date" class="form-control" style="width:200px" value="2020-01-01" ></td>
                                         <td><input type="number" step="0.01" class="form-control" min="1" style="width:100px" value="1000"></td>
                                         <td>
                                             <button class="mb-1 btn btn-danger btn-sm">
@@ -89,7 +89,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><input type="date" class="form-control" value="2020/01/01" ></td>
+                                        <td><input type="date" class="form-control" value="2020-01-01" ></td>
                                         <td><input type="number" class="form-control"  step="0.01" min="1" value="1000"></td>
                                         <td>
                                             <button class="mb-1 btn btn-danger btn-sm">
@@ -106,16 +106,3 @@
         </div>
     </div>
 </div>
-
-<style>
-    .table-retention-list{
-        height: 220px;
-        display: block;
-        margin-bottom: 30px;
-        border: 1px solid #e2e2e2;
-        overflow: auto;
-    }
-    .table.table-hover td{
-        cursor: pointer;
-    }
-</style>

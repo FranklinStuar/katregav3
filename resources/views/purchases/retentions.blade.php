@@ -105,16 +105,3 @@
         </div>
     </div>
 </div>
-
-<style>
-    .table-retention-list{
-        height: 220px;
-        display: block;
-        margin-bottom: 30px;
-        border: 1px solid #e2e2e2;
-        overflow: auto;
-    }
-    .table.table-hover td{
-        cursor: pointer;
-    }
-</style>

@@ -13,302 +13,24 @@
 @endsection
 
 @section('content')
-<style>
-    
-    .table.table-hover td{
-        cursor: pointer;
-    }
-    .title-table{
-        text-align: center
-    }
-</style>
     <div class="container-fluid">
         <div class="row">
 
             <div class=" col-sm-6 col-md-4">
-                <div class="card">
-                    <div class="card-header">
-                        Emisor
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-6"><strong>Empresa</strong></div>
-                            <div class="col-sm-6">{{Auth::user()->company()->name}}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6"><strong>@if(Auth::user()->company()->type_identification == 'ruc') RUC @elseif(Auth::user()->company()->type_identification == 'rise') RISE  @else Identificación @endif</strong></div>
-                            <div class="col-sm-6">{{Auth::user()->company()->identification}}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6"><strong>Dirección</strong></div>
-                            <div class="col-sm-6">{{Auth::user()->company()->address}}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6"><strong>Teléfono</strong></div>
-                            <div class="col-sm-6">{{Auth::user()->company()->identification}}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6"><strong>Correo Elctrónico</strong></div>
-                            <div class="col-sm-6">{{Auth::user()->company()->identification}}</div>
-                        </div>
-                    </div>
-                </div>
+                <company-component></company-component>
             </div>
             <div class=" col-sm-6 col-md-4">
-                <div class="card">
-                    <div class="card-header">
-                        Comprobante recibido
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-6"><strong>Fecha de emisión</strong></div>
-                            <div class="col-sm-6">
-                                <input type="date" class="form-control" value="{{$purchase->date->toDateString()}}">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6"><strong>Tipo de Comprobante</strong></div>
-                            <div class="col-sm-6">
-                                <select name="type_document" class="form-control" class="col-sm-6" required>
-                                    <option value="none" @if($purchase->type_document == 'none') selected @endif>Sin documento</option>
-                                    <option value="bill" @if($purchase->type_document == 'bill') selected @endif>Factura</option>
-                                    <option value="note" @if($purchase->type_document == 'note') selected @endif>Nota de venta</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6"><strong># de Comprobante</strong></div>
-                            <div class="col-sm-6">
-                                <input type="text" maxlength="17" class="form-control" value="{{$purchase->bill}}">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <purchase-bill-component></purchase-bill-component>
             </div>
             <div class=" col-sm-6 col-md-4">
-                <div class="card">
-                    <div class="card-header">
-                        Proveedor
-                        <div class="card-tools">
-                        @include('providers.modal-list')
-                        @include('providers.modal-create')
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        
-                        <div class="row">
-                            <div class="col-sm-6"><strong>Nombre</strong></div>
-                            <div class="col-sm-6">{{$purchase->provider->name}}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6"><strong>@if($purchase->provider->type_identification == 'ruc') RUC @elseif($purchase->provider->type_identification == 'rise') RISE  @else Identificación @endif</strong></div>
-                            <div class="col-sm-6">{{$purchase->provider->identification}}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6"><strong>Dirección</strong></div>
-                            <div class="col-sm-6">{{$purchase->provider->address}}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6"><strong>Teléfono</strong></div>
-                            <div class="col-sm-6">{{$purchase->provider->identification}}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6"><strong>Correo Elctrónico</strong></div>
-                            <div class="col-sm-6">{{$purchase->provider->identification}}</div>
-                        </div>
-
-                    </div>
-                </div>
+                <provider-purchase-component></provider-purchase-component>
             </div>
         </div>
 
 
         
-        <div class="card">
-            <div class="card-header">
-                <h4 class="title-table">Detalles</h4>
-            </div>
-            <div class="card-body table-responsive p-0">
-                <table class="table table-hover table-sm table-bordered table-head-fixed text-nowrap">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Cod</th>
-                            <th>Nombre</th>
-                            <th>Cantidad</th>
-                            <th>Precio Unitario</th>
-                            <th>Descuento</th>
-                            <th>Desc. %</th>
-                            <th>IVA</th>
-                            <th>Total</th>
-                            <th>T. Entrega</th>
-                            <th>Cant. Regalo</th>
-                            <th>Observación</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr data-toggle="modal" data-target=".details-modal">
-                            <td>1</td>
-                            <td>AbcElec</td>
-                            <td>Abc Electronic</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>$50 (D) </td>
-                            <td>$50</td>
-                            <td>50 %</td>
-                            <td>$50</td>
-                            <td>$50</td>
-                            <td>1 d[ia</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>Observaciones </td>
-                        </tr>
-                        <tr data-toggle="modal" data-target=".details-modal">
-                            <td>1</td>
-                            <td>AbcElec</td>
-                            <td>Abc Electronic</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>$50 (D) </td>
-                            <td>$50</td>
-                            <td>50 %</td>
-                            <td>$50</td>
-                            <td>$50</td>
-                            <td>1 d[ia</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>Observaciones </td>
-                        </tr>
-                        <tr data-toggle="modal" data-target=".details-modal">
-                            <td>1</td>
-                            <td>AbcElec</td>
-                            <td>Abc Electronic</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>$50 (D) </td>
-                            <td>$50</td>
-                            <td>50 %</td>
-                            <td>$50</td>
-                            <td>$50</td>
-                            <td>1 d[ia</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>Observaciones </td>
-                        </tr>
-                        <tr data-toggle="modal" data-target=".details-modal">
-                            <td>1</td>
-                            <td>AbcElec</td>
-                            <td>Abc Electronic</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>$50 (D) </td>
-                            <td>$50</td>
-                            <td>50 %</td>
-                            <td>$50</td>
-                            <td>$50</td>
-                            <td>1 d[ia</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>Observaciones </td>
-                        </tr>
-                        <tr data-toggle="modal" data-target=".details-modal">
-                            <td>1</td>
-                            <td>AbcElec</td>
-                            <td>Abc Electronic</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>$50 (D) </td>
-                            <td>$50</td>
-                            <td>50 %</td>
-                            <td>$50</td>
-                            <td>$50</td>
-                            <td>1 d[ia</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>Observaciones </td>
-                        </tr>
-                        <tr data-toggle="modal" data-target=".details-modal">
-                            <td>1</td>
-                            <td>AbcElec</td>
-                            <td>Abc Electronic</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>$50 (D) </td>
-                            <td>$50</td>
-                            <td>50 %</td>
-                            <td>$50</td>
-                            <td>$50</td>
-                            <td>1 d[ia</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>Observaciones </td>
-                        </tr>
-                        <tr data-toggle="modal" data-target=".details-modal">
-                            <td>1</td>
-                            <td>AbcElec</td>
-                            <td>Abc Electronic</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>$50 (D) </td>
-                            <td>$50</td>
-                            <td>50 %</td>
-                            <td>$50</td>
-                            <td>$50</td>
-                            <td>1 d[ia</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>Observaciones </td>
-                        </tr>
-                        <tr data-toggle="modal" data-target=".details-modal">
-                            <td>1</td>
-                            <td>AbcElec</td>
-                            <td>Abc Electronic</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>$50 (D) </td>
-                            <td>$50</td>
-                            <td>50 %</td>
-                            <td>$50</td>
-                            <td>$50</td>
-                            <td>1 d[ia</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>Observaciones </td>
-                        </tr>
-                        <tr data-toggle="modal" data-target=".details-modal">
-                            <td>1</td>
-                            <td>AbcElec</td>
-                            <td>Abc Electronic</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>$50 (D) </td>
-                            <td>$50</td>
-                            <td>50 %</td>
-                            <td>$50</td>
-                            <td>$50</td>
-                            <td>1 d[ia</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>Observaciones </td>
-                        </tr>
-                        <tr data-toggle="modal" data-target=".details-modal">
-                            <td>1</td>
-                            <td>AbcElec</td>
-                            <td>Abc Electronic</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>$50 (D) </td>
-                            <td>$50</td>
-                            <td>50 %</td>
-                            <td>$50</td>
-                            <td>$50</td>
-                            <td>1 d[ia</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>Observaciones </td>
-                        </tr>
-                        <tr data-toggle="modal" data-target=".details-modal">
-                            <td>1</td>
-                            <td>AbcElec</td>
-                            <td>Abc Electronic</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>$50 (D) </td>
-                            <td>$50</td>
-                            <td>50 %</td>
-                            <td>$50</td>
-                            <td>$50</td>
-                            <td>1 d[ia</td>
-                            <td>Cantidad (Medida) </td>
-                            <td>Observaciones </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="card-footer title-table">
-                @include('purchases.modal-details')
-                @include('products.modal-create')
-            </div>
-        </div>
+        <detail-card></detail-card>
+
 
 
         <div class="row">
@@ -403,11 +125,6 @@
             
             <div class="col-md-4">
                 
-                <style>
-                    .total-final{
-                        text-align: center
-                    }
-                </style>
                 <div class="card total-final">
                     {{-- <div class="card-head">Total a pagar</div> --}}
                     <div class="card-body">
@@ -498,6 +215,8 @@
 @endsection
 
 @section('scripts-bottom')
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         $(()=>{
             $('#cancel').click(()=>{
