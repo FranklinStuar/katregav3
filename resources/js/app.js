@@ -25,6 +25,20 @@ Vue.component('purchase-bill-component', require('./components/Transaction/Purch
 Vue.component('provider-create-simple-component', require('./components/Provider/CreateSimpleComponent.vue').default);
 Vue.component('provider-search-component', require('./components/Provider/SearchComponent.vue').default);
 Vue.component('provider-purchase-component', require('./components/Purchase/ProviderComponent.vue').default);
+Vue.component('payment-item-account', require('./components/Transaction/Payments/ItemAccount.vue').default);
+Vue.component('payment-item-check', require('./components/Transaction/Payments/ItemCheck.vue').default);
+Vue.component('payment-item-credit', require('./components/Transaction/Payments/ItemCredit.vue').default);
+Vue.component('payment-modal', require('./components/Transaction/Payments/Modal.vue').default);
+Vue.component('retention-item-retencion-list', require('./components/Transaction/Retentions/ItemRetencionCompany.vue').default);
+Vue.component('retention-item-retenido', require('./components/Transaction/Retentions/ItemRetenido.vue').default);
+Vue.component('retention-provider-item', require('./components/Transaction/Retentions/ItemProvider.vue').default);
+Vue.component('retention-total', require('./components/Transaction/Retentions/Total.vue').default);
+Vue.component('retention-provider', require('./components/Transaction/Retentions/ModalProvider.vue').default);
+Vue.component('monto-total-final', require('./components/Transaction/Montos/TotalFinal.vue').default);
+Vue.component('monto-adicional', require('./components/Transaction/Montos/Adicionales.vue').default);
+Vue.component('monto-ajuste', require('./components/Transaction/Montos/Ajuste.vue').default);
+Vue.component('monto-no-editable', require('./components/Transaction/Montos/NoEditable.vue').default);
+Vue.component('monto-editable', require('./components/Transaction/Montos/Editable.vue').default);
 Vue.component('detail-service-info', require('./components/Transaction/Detail/Service.vue').default);
 Vue.component('detail-product-info', require('./components/Transaction/Detail/Product.vue').default);
 Vue.component('detail-config-detail', require('./components/Transaction/Detail/ConfigDetail.vue').default);
@@ -35,6 +49,8 @@ Vue.component('detail-search', require('./components/Transaction/Detail/Search.v
 Vue.component('detail-modal', require('./components/Transaction/Detail/Modal.vue').default);
 Vue.component('detail-item-list', require('./components/Transaction/Detail/ItemList.vue').default);
 Vue.component('detail-card', require('./components/Transaction/Detail/Detail.vue').default);
+Vue.component('transaction-observations', require('./components/Transaction/Observations.vue').default);
+Vue.component('transaction-guia-remision', require('./components/Transaction/GuiaRemision.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

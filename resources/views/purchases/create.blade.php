@@ -36,89 +36,11 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-body table-responsive p-0" style="max-height: 450px;">
-                        <table class="table table-head-fixed text-nowrap">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th>Sin IVA</th>
-                                <th>Con IVA</th>
-                                <th>Totales</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Subtotal</td>
-                                    <td>
-                                        <input type="number" placeholder="1.0" step="0.01" min="0" name="deb" class="form-control" id >
-                                    </td>
-                                    <td>
-                                        <input type="number" placeholder="1.0" step="0.01" min="0" name="deb" class="form-control" id >
-                                    </td>
-                                    <td>
-                                        <span class="form-control text-muted">1000</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Descuento $</td>
-                                    <td>
-                                        <input type="number" placeholder="1.0" step="0.01" min="0" name="deb" class="form-control" id >
-                                    </td>
-                                    <td>
-                                        <input type="number" placeholder="1.0" step="0.01" min="0" name="deb" class="form-control" id >
-                                    </td>
-                                    <td>
-                                        <span class="form-control text-muted">1000</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Descuento %</td>
-                                    <td>
-                                        <input type="number" placeholder="1.0" step="0.01" min="0" name="deb" class="form-control" id >
-                                    </td>
-                                    <td>
-                                        <input type="number" placeholder="1.0" step="0.01" min="0" name="deb" class="form-control" id >
-                                    </td>
-                                    <td>
-                                        <span class="form-control text-muted">1000</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>IVA</td>
-                                    <td>
-                                        <span class="form-control text-muted">0</span>
-                                    </td>
-                                    <td>
-                                        <input type="number" placeholder="1.0" step="0.01" min="0" name="deb" class="form-control" id >
-                                    </td>
-                                    <td>
-                                        <span class="form-control text-muted">1000</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>TOTAL</td>
-                                    <td>
-                                        1000
-                                    </td>
-                                    <td>
-                                        1000
-                                    </td>
-                                    <td>
-                                        @include('purchases.modal-ajust-amount')
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.card-body -->
+                    <monto-editable class="table-responsive"></monto-editable>
                 </div>
-                <!-- /.card -->
                 <div class="card">
                     <div class="card-body">
-                        <div class="form-group">
-                            <label for="exampleFormControlFile1">Observaciones</label>
-                            <textarea rows="4" class="form-control"></textarea>
-                        </div>
+                        <transaction-observations></transaction-observations>
                     </div>
                 </div>
             </div>
@@ -127,48 +49,14 @@
                 
                 <div class="card total-final">
                     {{-- <div class="card-head">Total a pagar</div> --}}
-                    <div class="card-body">
-                        <h6 class="card-subtitle mb-2 text-muted">Total a pagar</h6>
-                        <h2>$ 184000.00</h2>
-                    </div>
+                    <monto-total-final class="card-body"></monto-total-final>
+                </div>
+                <div class="card">
+                    <monto-adicional class="card-body"></monto-adicional>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="text-center">Montos adicionales no facturados</h6>
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td>Servicios extra</td>
-                                    <td>
-                                        <input type="number" placeholder="1.0" step="0.01" min="1" name="disscount_fix" class="form-control">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Transporte</td>
-                                    <td>
-                                        <input type="number" placeholder="1.0" step="0.01" min="1" name="disscount_fix" class="form-control">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Intereses</td>
-                                    <td>
-                                        <input type="number" placeholder="1.0" step="0.01" min="1" name="disscount_fix" class="form-control">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Total</td>
-                                    <td>$ 1000.00</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="exampleFormControlFile1">Guía de remisión</label>
-                            <input type="text" maxlength="159" class="form-control" value="12397312487698">
-                        </div>
+                        <transaction-guia-remision></transaction-guia-remision>
                     </div>
                 </div>
             </div>
@@ -177,10 +65,16 @@
             <div class="col-md-2 col-sm-6">
                 <div class="row">
                     <div class="col-md-12">
-                        @include('purchases.modal-payment')
+                        <payment-modal 
+                            class="mb-1 col-sm-12 p-0" 
+                            :company-name='"{{Auth::user()->company()->name}}"'
+                        ></payment-modal>
                     </div>
                     <div class="col-md-12">
-                        @include('purchases.retentions')
+                        <retention-provider 
+                            class="mb-1 col-sm-12 p-0" 
+                            :company-name='"{{Auth::user()->company()->name}}"'
+                        ></retention-provider>
                     </div>
                     
                     <div class="col-md-12">
