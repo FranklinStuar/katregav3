@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-8">
-                                <h5>Cheques entregados 1</h5>
+                                <h5>Cheques entregados</h5>
                                 <div class="table-responsive table-retention-list">
                                     <table class="table table-sm table-hover">
                                         <thead>

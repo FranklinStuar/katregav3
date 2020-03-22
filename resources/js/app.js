@@ -51,6 +51,10 @@ Vue.component('detail-item-list', require('./components/Transaction/Detail/ItemL
 Vue.component('detail-card', require('./components/Transaction/Detail/Detail.vue').default);
 Vue.component('transaction-observations', require('./components/Transaction/Observations.vue').default);
 Vue.component('transaction-guia-remision', require('./components/Transaction/GuiaRemision.vue').default);
+Vue.component('transaction-upload-bill', require('./components/Transaction/UploadBill.vue').default);
+Vue.component('transaction-turn-money', require('./components/Transaction/TurnMoney.vue').default);
+Vue.component('purchase-btn', require('./components/Purchase/BtnOption.vue').default);
+Vue.component('purchase-create', require('./components/Purchase/Create.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
